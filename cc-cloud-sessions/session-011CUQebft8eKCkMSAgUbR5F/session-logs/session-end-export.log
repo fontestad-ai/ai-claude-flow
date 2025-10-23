@@ -1,0 +1,8 @@
+npm warn exec The following package was not found and will be installed: claude-flow@2.7.1
+npm error code ENOTEMPTY
+npm error syscall rename
+npm error path /root/.npm/_npx/7cfa166e65244432/node_modules/better-sqlite3
+npm error dest /root/.npm/_npx/7cfa166e65244432/node_modules/.better-sqlite3-YkWay9US
+npm error errno -39
+npm error ENOTEMPTY: directory not empty, rename '/root/.npm/_npx/7cfa166e65244432/node_modules/better-sqlite3' -> '/root/.npm/_npx/7cfa166e65244432/node_modules/.better-sqlite3-YkWay9US'
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-10-23T23_30_30_292Z-debug-0.log
