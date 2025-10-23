@@ -1,0 +1,4653 @@
+diff --git a/docs/best-practices/issues/ISSUE-BEST-PRACTICES.md b/docs/best-practices/issues/ISSUE-BEST-PRACTICES.md
+new file mode 100644
+index 00000000..084b00c1
+--- /dev/null
++++ b/docs/best-practices/issues/ISSUE-BEST-PRACTICES.md
+@@ -0,0 +1,961 @@
++# GitHub Issue Best Practices Guide
++
++## Table of Contents
++
++1. [Overview](#overview)
++2. [Issue Types & Categories](#issue-types--categories)
++3. [Issue Structure & Formatting](#issue-structure--formatting)
++4. [Common Sections & Organization](#common-sections--organization)
++5. [Naming Conventions](#naming-conventions)
++6. [Labeling Strategy](#labeling-strategy)
++7. [Dos and Don'ts](#dos-and-donts)
++8. [Swarm Coordination Patterns](#swarm-coordination-patterns)
++9. [Automation & Integration](#automation--integration)
++10. [Quality Checklist](#quality-checklist)
++
++---
++
++## Overview
++
++This guide provides comprehensive best practices for creating, managing, and organizing GitHub issues in the ai-claude-flow repository. These practices are optimized for Claude Code integration and support automated workflows, swarm coordination, and intelligent project management.
++
++### Key Principles
++
++1. **Clarity First**: Every issue should be immediately understandable
++2. **Actionable Content**: Include specific, measurable objectives
++3. **Structured Organization**: Use consistent sections and formatting
++4. **Automation-Ready**: Format for machine parsing and workflow integration
++5. **Swarm-Friendly**: Support multi-agent coordination and tracking
++
++---
++
++## Issue Types & Categories
++
++### 1. Bug Reports 🐛
++
++**Purpose**: Document defects, errors, or unexpected behavior
++
++**When to Use**:
++- Code produces incorrect results
++- Features not working as designed
++- Performance degradation
++- Data integrity issues
++- Security vulnerabilities
++
++**Template**: See [bug-report.md](./templates/bug-report.md)
++
++**Example Title**: `[BUG] MCP Pattern Store Not Persisting Data`
++
++---
++
++### 2. Feature Requests ✨
++
++**Purpose**: Propose new functionality or enhancements
++
++**When to Use**:
++- Adding new capabilities
++- Extending existing features
++- Improving user experience
++- Integration requests
++
++**Template**: See [feature-request.md](./templates/feature-request.md)
++
++**Example Title**: `[FEATURE] Real-time Collaboration with WebSockets`
++
++---
++
++### 3. Enhancement Proposals 🔧
++
++**Purpose**: Improvements to existing functionality
++
++**When to Use**:
++- Performance optimizations
++- Code refactoring
++- Documentation improvements
++- Developer experience enhancements
++
++**Template**: See [enhancement.md](./templates/enhancement.md)
++
++**Example Title**: `[ENHANCEMENT] Optimize Swarm Coordination Performance`
++
++---
++
++### 4. Documentation 📚
++
++**Purpose**: Documentation updates, additions, or corrections
++
++**When to Use**:
++- Missing documentation
++- Outdated guides
++- Tutorial improvements
++- API documentation
++
++**Template**: See [documentation.md](./templates/documentation.md)
++
++**Example Title**: `[DOCS] Update Integration Guides for v2.7.1`
++
++---
++
++### 5. Integration Tasks 🔄
++
++**Purpose**: Complex integration between components or systems
++
++**When to Use**:
++- Multi-component integration
++- Third-party service integration
++- Cross-repository coordination
++- System architecture changes
++
++**Template**: See [integration-task.md](./templates/integration-task.md)
++
++**Example Title**: `[INTEGRATION] Complete Claude-Flow and Ruv-Swarm Integration`
++
++---
++
++### 6. Incident Reports 🚨
++
++**Purpose**: Document incidents requiring immediate attention or rollback
++
++**When to Use**:
++- Production issues
++- Rollback requirements
++- Critical failures
++- Security incidents
++
++**Template**: See [rollback-incident.md](./templates/rollback-incident.md)
++
++**Example Title**: `🔄 Rollback Incident: v2.7.0 Deployment Failure`
++
++---
++
++### 7. Swarm Tasks 🐝
++
++**Purpose**: Issues designed for multi-agent swarm coordination
++
++**When to Use**:
++- Complex multi-step tasks
++- Parallel agent execution
++- Coordinated workflows
++- Large-scale automation
++
++**Template**: See [swarm-task.md](./templates/swarm-task.md)
++
++**Example Title**: `[SWARM] Multi-Repo Version Alignment and Synchronization`
++
++---
++
++## Issue Structure & Formatting
++
++### Standard Issue Structure
++
++Every issue should follow this hierarchy:
++
++```markdown
++---
++title: "[TYPE] Clear, Descriptive Title"
++labels: type, priority, area
++assignees: username
++---
++
++## 🎯 [Status/Type Indicator] Overview
++
++[Brief 1-2 sentence summary]
++
++## Objectives
++
++- [ ] Specific, measurable objective 1
++- [ ] Specific, measurable objective 2
++- [ ] Specific, measurable objective 3
++
++## [Context-Specific Sections]
++
++### Section 1
++[Detailed content]
++
++### Section 2
++[Detailed content]
++
++## Swarm Coordination (if applicable)
++
++**Topology**: mesh | hierarchical | ring | star
++**Agents**: agent-type-1, agent-type-2, agent-type-3
++
++## Checklist
++
++- [ ] Implementation complete
++- [ ] Tests passing
++- [ ] Documentation updated
++- [ ] PR created
++
++## Related Issues/PRs
++
++- Relates to #123
++- Depends on #456
++- Blocks #789
++
++---
++
++**Metadata**
++- **Version**: vX.Y.Z
++- **Priority**: Critical | High | Medium | Low
++- **Complexity**: High | Medium | Low
++```
++
++---
++
++### Formatting Best Practices
++
++#### 1. Use Emojis for Visual Organization
++
++**Standard Emoji Conventions**:
++- 🐛 Bug reports
++- ✨ Feature requests
++- 🔧 Enhancements
++- 📚 Documentation
++- 🔄 Integration tasks
++- 🚨 Incidents/Rollbacks
++- 🐝 Swarm tasks
++- ✅ Completed items
++- ❌ Failed/Blocked items
++- 🔄 In Progress
++- ⏳ Pending
++- 📊 Metrics/Analytics
++- 🎯 Goals/Objectives
++- 🏗️ Architecture
++- 🔒 Security
++- ⚡ Performance
++- 💡 Ideas/Suggestions
++
++#### 2. Checkbox Lists for Task Tracking
++
++```markdown
++## Objectives
++- [ ] Uncompleted task
++- [x] Completed task
++- [ ] Pending task with subtasks:
++  - [x] Subtask 1
++  - [ ] Subtask 2
++```
++
++#### 3. Code Blocks with Language Hints
++
++```markdown
++### Implementation Example
++\`\`\`javascript
++// Always specify language for syntax highlighting
++const example = "code here";
++\`\`\`
++
++### Command Example
++\`\`\`bash
++# Include command examples
++npx claude-flow command --option
++\`\`\`
++```
++
++#### 4. Tables for Structured Data
++
++```markdown
++| Status | Before | After |
++|--------|--------|-------|
++| Feature A | ⚠️ Partial | ✅ Complete |
++| Feature B | ❌ Broken | ✅ Fixed |
++```
++
++#### 5. Collapsible Sections for Long Content
++
++```markdown
++<details>
++<summary><strong>Click to expand: Detailed Analysis</strong></summary>
++
++[Long detailed content here]
++
++</details>
++```
++
++---
++
++## Common Sections & Organization
++
++### Required Sections (All Issues)
++
++#### 1. Title
++- **Format**: `[TYPE] Clear, Descriptive Title (50-80 chars)`
++- **Guidelines**:
++  - Start with issue type in brackets
++  - Use action verbs
++  - Be specific and searchable
++  - Include key components/features
++
++**Good Examples**:
++- `[BUG] MCP Pattern Store Not Persisting to Memory`
++- `[FEATURE] Real-time WebSocket Collaboration`
++- `[DOCS] Update API Documentation for v2.7.1`
++
++**Bad Examples**:
++- `Bug in code` (too vague)
++- `Fix the thing` (not descriptive)
++- `Update docs` (missing specificity)
++
++---
++
++#### 2. Overview/Summary
++- **Purpose**: Provide immediate context
++- **Length**: 1-3 sentences
++- **Content**: What, why, and impact
++
++```markdown
++## Overview
++
++[Component/Feature] is experiencing [issue/need] which affects [users/systems].
++This [issue/feature] is needed to [goal/outcome].
++```
++
++---
++
++#### 3. Objectives
++- **Purpose**: Define clear, measurable goals
++- **Format**: Checkbox list
++- **Guidelines**: Use SMART criteria (Specific, Measurable, Achievable, Relevant, Time-bound)
++
++```markdown
++## Objectives
++
++- [ ] Implement core functionality with 90% test coverage
++- [ ] Update documentation with usage examples
++- [ ] Deploy to staging environment
++- [ ] Verify production readiness
++```
++
++---
++
++### Context-Specific Sections
++
++#### For Bug Reports
++
++```markdown
++## Bug Description
++[Clear description of the issue]
++
++## Impact
++- 🔴 **Severity**: Critical | High | Medium | Low
++- 👥 **Affected Users**: [number or percentage]
++- 📊 **Data Loss Risk**: Yes | No
++- 🔍 **Discoverability**: [How was it found]
++
++## Root Cause Analysis
++[Technical explanation of why the bug occurs]
++
++## Reproduction Steps
++1. [Step 1]
++2. [Step 2]
++3. [Step 3]
++
++**Expected Behavior**: [What should happen]
++**Actual Behavior**: [What actually happens]
++
++## Environment
++- **Version**: vX.Y.Z
++- **Node.js**: vX.Y.Z
++- **OS**: Operating system
++- **Additional Context**: [Any relevant details]
++
++## Solution Implemented
++[Detailed explanation of the fix]
++
++## Testing
++- **Test Files**: [paths to test files]
++- **Coverage**: X% (target: 90%+)
++- **Manual Testing**: [scenarios tested]
++
++## Verification
++[Steps to verify the fix works]
++```
++
++---
++
++#### For Feature Requests
++
++```markdown
++## Feature Description
++[Clear, detailed description of the proposed feature]
++
++## Use Cases
++1. **Use Case 1**: [Description]
++   - **Actor**: [Who uses this]
++   - **Action**: [What they do]
++   - **Outcome**: [Expected result]
++
++2. **Use Case 2**: [Description]
++
++## Acceptance Criteria
++- [ ] Criterion 1
++- [ ] Criterion 2
++- [ ] Criterion 3
++
++## Implementation Approach
++
++### Design
++- [ ] Architecture design
++- [ ] API design
++- [ ] UI/UX mockups (if applicable)
++
++### Development
++- [ ] Core implementation
++- [ ] Integration with existing features
++- [ ] Performance optimization
++
++### Testing
++- [ ] Unit tests (90%+ coverage)
++- [ ] Integration tests
++- [ ] User acceptance testing
++
++## Performance Impact
++- **Expected Load**: [metrics]
++- **Resource Requirements**: [CPU, memory, etc.]
++- **Scalability**: [How it scales]
++```
++
++---
++
++#### For Integration Tasks
++
++```markdown
++## Integration Overview
++[High-level description of what's being integrated]
++
++## Integration Areas
++
++### Dependencies
++- [ ] Package.json updates
++- [ ] Version compatibility checks
++- [ ] Import statement verification
++
++### Functionality
++- [ ] Core feature integration
++- [ ] API compatibility
++- [ ] Data flow validation
++
++### Testing
++- [ ] Unit tests for each component
++- [ ] Integration tests for data flow
++- [ ] End-to-end validation
++
++## Integration Challenges
++[Known challenges and mitigation strategies]
++
++## Migration Path
++[How to migrate from current state to integrated state]
++```
++
++---
++
++#### For Swarm Tasks
++
++```markdown
++## Swarm Configuration
++
++### Topology
++**Selected**: mesh | hierarchical | ring | star
++**Reason**: [Why this topology was chosen]
++
++### Agent Assignment
++- **Coordinator**: Overall progress tracking
++- **Analyst**: Technical validation and analysis
++- **Coder**: Implementation
++- **Tester**: Quality assurance
++- **Documenter**: Documentation updates
++
++### Task Decomposition
++1. **Task 1** (Priority: High, Agent: coder)
++   - [ ] Subtask 1.1
++   - [ ] Subtask 1.2
++
++2. **Task 2** (Priority: Medium, Agent: tester)
++   - [ ] Subtask 2.1
++   - [ ] Subtask 2.2
++
++## Coordination Protocol
++- **Pre-hooks**: [Setup operations]
++- **During**: [Progress tracking]
++- **Post-hooks**: [Cleanup and reporting]
++
++## Progress Tracking
++[Automated updates will be posted by swarm agents]
++```
++
++---
++
++## Naming Conventions
++
++### Title Conventions
++
++**Format**: `[TYPE] Action Verb + Component + Specific Detail`
++
++**Examples by Type**:
++- **Bug**: `[BUG] Swarm Coordinator Fails on Large Topologies`
++- **Feature**: `[FEATURE] Add Real-time Collaboration Support`
++- **Enhancement**: `[ENHANCEMENT] Optimize Memory Usage in Pattern Store`
++- **Docs**: `[DOCS] Add Getting Started Guide for New Users`
++- **Integration**: `[INTEGRATION] Connect AgentDB with ReasoningBank`
++- **Incident**: `🔄 Rollback Incident: v2.7.0 Memory Leak`
++- **Swarm**: `[SWARM] Multi-Agent Code Review Pipeline`
++
++### Branch Naming
++
++When creating branches from issues:
++
++```bash
++# Format: type/issue-description-session-id
++git checkout -b claude/issue-bug-pattern-persistence-011CUQtutJdEPu3jTnB7QzRH
++```
++
++**Pattern**: `claude/issue-<type>-<brief-description>-<session-id>`
++
++---
++
++## Labeling Strategy
++
++### Standard Labels
++
++#### By Type
++- `bug` - Code defects
++- `enhancement` - Improvements to existing features
++- `feature` - New functionality
++- `documentation` - Documentation updates
++- `integration` - Integration tasks
++- `incident` - Critical incidents
++- `swarm-task` - Multi-agent coordination
++
++#### By Priority
++- `critical` - Immediate attention required
++- `high-priority` - Important, schedule soon
++- `medium-priority` - Normal priority
++- `low-priority` - Nice to have
++
++#### By Status
++- `in-progress` - Currently being worked on
++- `blocked` - Waiting on dependencies
++- `needs-review` - Ready for review
++- `ready-for-merge` - Approved and ready
++- `stale` - Inactive for 30+ days
++
++#### By Area
++- `mcp` - MCP server related
++- `neural` - Neural pattern features
++- `github` - GitHub integration
++- `swarm` - Swarm coordination
++- `hooks` - Hook system
++- `memory` - Memory management
++- `performance` - Performance related
++
++#### By Agent Type
++- `swarm-debugger` - Requires debugger agent
++- `swarm-feature` - Requires feature agents
++- `swarm-optimizer` - Requires optimizer agent
++- `swarm-ready` - Ready for swarm processing
++
++### Label Combinations
++
++**Examples**:
++- `bug, critical, mcp, high-priority` - Critical MCP bug
++- `feature, enhancement, swarm, swarm-ready` - Swarm feature enhancement
++- `documentation, low-priority, needs-review` - Docs needing review
++
++---
++
++## Dos and Don'ts
++
++### ✅ DO
++
++1. **DO write clear, descriptive titles**
++   - Good: `[BUG] Memory leak in SwarmCoordinator after 100+ agents`
++   - Reasoning: Specific, searchable, includes component and symptom
++
++2. **DO include reproduction steps for bugs**
++   - Numbered steps with expected vs actual behavior
++   - Include environment details
++   - Add minimal code examples
++
++3. **DO break down complex tasks**
++   - Use checkbox lists for subtasks
++   - Assign priorities to each subtask
++   - Track progress with updates
++
++4. **DO link related issues and PRs**
++   - Use `Relates to #123`, `Depends on #456`, `Blocks #789`
++   - Create relationships for dependency tracking
++   - Update when new connections discovered
++
++5. **DO use consistent formatting**
++   - Follow template structure
++   - Use standard emoji conventions
++   - Apply proper markdown syntax
++
++6. **DO include acceptance criteria**
++   - Define clear success metrics
++   - Specify test coverage requirements
++   - Set performance targets
++
++7. **DO update progress regularly**
++   - Post comments with status updates
++   - Update checkboxes as tasks complete
++   - Notify on blockers or changes
++
++8. **DO assign appropriate labels**
++   - Apply type, priority, and area labels
++   - Update labels as status changes
++   - Use swarm-related labels when applicable
++
++9. **DO consider swarm coordination**
++   - Identify if multi-agent approach is beneficial
++   - Specify topology and agent types
++   - Include coordination protocol
++
++10. **DO provide complete context**
++    - Include relevant background information
++    - Link to related documentation
++    - Add screenshots or examples when helpful
++
++---
++
++### ❌ DON'T
++
++1. **DON'T use vague titles**
++   - Bad: `Fix bug`
++   - Why: Not searchable, no context, no component identified
++
++2. **DON'T skip environment details for bugs**
++   - Bad: "It doesn't work"
++   - Why: Cannot reproduce, waste time investigating
++
++3. **DON'T create duplicate issues**
++   - Search existing issues first
++   - Comment on existing issue if related
++   - Use "Duplicate of #123" and close
++
++4. **DON'T mix multiple unrelated issues**
++   - Bad: "Fix bug X and add feature Y"
++   - Why: Difficult to track, impossible to close properly
++
++5. **DON'T use issues for questions**
++   - Use GitHub Discussions for questions
++   - Use issues for actionable items only
++   - Convert discussions to issues when actionable
++
++6. **DON'T forget to update status**
++   - Update checkboxes as you progress
++   - Post blockers immediately
++   - Close when complete
++
++7. **DON'T skip testing requirements**
++   - Always specify expected test coverage
++   - Include manual testing steps
++   - Verify before closing
++
++8. **DON'T ignore related work**
++   - Link to related PRs
++   - Reference prior art
++   - Acknowledge dependencies
++
++9. **DON'T use informal language**
++   - Be professional and clear
++   - Use technical terminology appropriately
++   - Avoid ambiguous phrasing
++
++10. **DON'T leave orphaned issues**
++    - Close completed issues
++    - Archive stale issues
++    - Maintain issue hygiene
++
++---
++
++## Swarm Coordination Patterns
++
++### When to Use Swarm Coordination
++
++**Complex Multi-Step Tasks** (3+ major steps)
++**Parallel Execution Opportunities** (independent subtasks)
++**Multiple Skill Requirements** (different agent types needed)
++**Large-Scale Operations** (affecting multiple components)
++
++### Swarm Topology Selection
++
++#### Mesh Topology
++**Best For**: Parallel, independent tasks
++**Example**: Feature development with frontend, backend, and testing in parallel
++
++```markdown
++## Swarm Configuration
++**Topology**: mesh
++**Max Agents**: 6
++**Coordination**: Peer-to-peer with shared memory
++
++### Agents
++- Frontend Developer (agent-1)
++- Backend Developer (agent-2)
++- Database Architect (agent-3)
++- Test Engineer (agent-4)
++- Security Auditor (agent-5)
++- Documenter (agent-6)
++```
++
++#### Hierarchical Topology
++**Best For**: Coordinated workflows with dependencies
++**Example**: Release management with stage gates
++
++```markdown
++## Swarm Configuration
++**Topology**: hierarchical
++**Max Agents**: 8
++**Coordination**: Queen-led with worker specialization
++
++### Hierarchy
++- **Queen (Coordinator)**: Overall orchestration
++  - **Worker (Tester)**: Test execution
++  - **Worker (Builder)**: Build and package
++  - **Worker (Deployer)**: Deployment operations
++  - **Worker (Monitor)**: Health checks
++```
++
++#### Ring Topology
++**Best For**: Sequential processing with handoffs
++**Example**: CI/CD pipeline stages
++
++```markdown
++## Swarm Configuration
++**Topology**: ring
++**Max Agents**: 4
++**Coordination**: Sequential with state passing
++
++### Processing Order
++1. **Linter** → Validates code style
++2. **Tester** → Runs test suite
++3. **Builder** → Creates artifacts
++4. **Deployer** → Pushes to staging
++```
++
++#### Star Topology
++**Best For**: Centralized coordination with distributed workers
++**Example**: Issue triage and routing
++
++```markdown
++## Swarm Configuration
++**Topology**: star
++**Max Agents**: 5
++**Coordination**: Central hub with specialized agents
++
++### Structure
++- **Hub (Triager)**: Route issues to specialists
++  - **Bug Specialist**: Handle bug reports
++  - **Feature Specialist**: Process feature requests
++  - **Docs Specialist**: Manage documentation
++  - **Integration Specialist**: Coordinate integrations
++```
++
++### Agent Assignment Guidelines
++
++**Coordinator/Queen**: Overall orchestration and progress tracking
++**Analyst**: Technical analysis, code review, performance profiling
++**Coder/Developer**: Implementation work
++**Tester/QA**: Test creation and validation
++**Security**: Security audits and vulnerability scanning
++**Documenter**: Documentation creation and updates
++**Debugger**: Bug investigation and root cause analysis
++**Optimizer**: Performance optimization
++**Architect**: System design and architecture
++
++### Swarm Hooks Integration
++
++```markdown
++## Coordination Protocol
++
++### Pre-Task Hooks
++\`\`\`bash
++# Initialize swarm environment
++npx claude-flow@alpha hooks pre-task \\
++  --description "Feature: OAuth2 Integration" \\
++  --session-id "swarm-oauth-integration"
++
++# Restore prior context
++npx claude-flow@alpha hooks session-restore \\
++  --session-id "swarm-oauth-integration"
++\`\`\`
++
++### During Task
++\`\`\`bash
++# Track progress
++npx claude-flow@alpha hooks notify \\
++  --message "Completed OAuth provider integration" \\
++  --memory-key "swarm/oauth/progress"
++
++# Store intermediate results
++npx claude-flow@alpha hooks post-edit \\
++  --file "src/auth/oauth.js" \\
++  --memory-key "swarm/oauth/implementation"
++\`\`\`
++
++### Post-Task Hooks
++\`\`\`bash
++# Finalize and report
++npx claude-flow@alpha hooks post-task \\
++  --task-id "oauth-integration" \\
++  --export-metrics true
++
++# Store completion state
++npx claude-flow@alpha hooks session-end \\
++  --session-id "swarm-oauth-integration" \\
++  --export-path "./swarm-reports"
++\`\`\`
++```
++
++---
++
++## Automation & Integration
++
++### GitHub Actions Integration
++
++```yaml
++# .github/workflows/issue-automation.yml
++name: Issue Automation
++on:
++  issues:
++    types: [opened, labeled, edited]
++
++jobs:
++  auto-triage:
++    runs-on: ubuntu-latest
++    steps:
++      - name: Analyze Issue
++        if: contains(github.event.issue.labels.*.name, 'swarm-ready')
++        run: |
++          ISSUE_DATA=$(gh issue view ${{ github.event.issue.number }} \\
++            --json title,body,labels)
++
++          npx ruv-swarm github issue-analyze \\
++            --issue-data "$ISSUE_DATA" \\
++            --suggest-agents \\
++            --auto-decompose
++
++      - name: Add Progress Tracking
++        run: |
++          gh issue comment ${{ github.event.issue.number }} \\
++            --body "🐝 Swarm coordination initialized for this issue"
++```
++
++### Claude Code Command Integration
++
++Create custom command for issue management:
++
++```markdown
++# .claude/commands/github/create-issue.md
++
++Create a comprehensive GitHub issue with swarm coordination.
++
++## Usage
++Create an issue of type: bug | feature | enhancement | docs | integration
++
++## Process
++1. Gather requirements from user
++2. Select appropriate template
++3. Fill in all required sections
++4. Suggest labels based on content
++5. Recommend swarm topology if complex
++6. Create issue via gh CLI
++7. Initialize swarm if needed
++
++## Example
++\`\`\`bash
++gh issue create \\
++  --title "[FEATURE] Real-time Collaboration" \\
++  --body "$(cat issue-body.md)" \\
++  --label "feature,high-priority,swarm-ready"
++\`\`\`
++```
++
++### Claude Code Skill Integration
++
++Leverage the `github-project-management` skill:
++
++```bash
++# Activate the skill to access comprehensive issue management
++# The skill provides automated:
++# - Issue creation with templates
++# - Progress tracking
++# - Swarm coordination
++# - Project board sync
++```
++
++---
++
++## Quality Checklist
++
++### Before Creating an Issue
++
++- [ ] Searched existing issues for duplicates
++- [ ] Selected appropriate issue type and template
++- [ ] Written clear, descriptive title (50-80 chars)
++- [ ] Included comprehensive overview/summary
++- [ ] Defined specific, measurable objectives
++- [ ] Added all required context sections
++- [ ] Included reproduction steps (if bug)
++- [ ] Specified acceptance criteria
++- [ ] Applied appropriate labels
++- [ ] Linked related issues/PRs
++- [ ] Considered swarm coordination needs
++- [ ] Added priority and severity indicators
++- [ ] Included environment details (if applicable)
++- [ ] Proofread for clarity and completeness
++
++### During Issue Lifecycle
++
++- [ ] Updated status regularly via comments
++- [ ] Checked off completed objectives
++- [ ] Posted blockers immediately
++- [ ] Updated labels as status changes
++- [ ] Responded to questions promptly
++- [ ] Linked PRs when created
++- [ ] Updated swarm progress
++- [ ] Maintained professional communication
++
++### Before Closing an Issue
++
++- [ ] All objectives completed
++- [ ] Tests written and passing
++- [ ] Documentation updated
++- [ ] PR merged (if applicable)
++- [ ] Verified in production/staging
++- [ ] Posted completion summary
++- [ ] Linked final PR(s)
++- [ ] Updated related issues
++- [ ] Exported any relevant metrics
++- [ ] Archived swarm coordination data
++
++---
++
++## Templates Reference
++
++All templates are available in `./templates/`:
++
++- [bug-report.md](./templates/bug-report.md) - Bug reports with root cause analysis
++- [feature-request.md](./templates/feature-request.md) - New feature proposals
++- [enhancement.md](./templates/enhancement.md) - Improvements to existing features
++- [documentation.md](./templates/documentation.md) - Documentation updates
++- [integration-task.md](./templates/integration-task.md) - Complex integrations
++- [rollback-incident.md](./templates/rollback-incident.md) - Incident reports
++- [swarm-task.md](./templates/swarm-task.md) - Multi-agent coordination tasks
++
++---
++
++## Additional Resources
++
++- [GitHub Project Management Skill](../../.claude/skills/github-project-management/SKILL.md)
++- [Issue Tracker Agent](../../.claude/agents/github/issue-tracker.md)
++- [Swarm Issue Agent](../../.claude/agents/github/swarm-issue.md)
++- [GitHub Workflow Automation](../../.claude/skills/github-workflow-automation/SKILL.md)
++
++---
++
++**Version**: 1.0.0
++**Last Updated**: 2025-10-23
++**Maintainer**: Claude Code
+diff --git a/docs/best-practices/issues/README.md b/docs/best-practices/issues/README.md
+new file mode 100644
+index 00000000..5b260689
+--- /dev/null
++++ b/docs/best-practices/issues/README.md
+@@ -0,0 +1,297 @@
++# GitHub Issue Best Practices
++
++Comprehensive guide and templates for creating, managing, and organizing GitHub issues in ai-claude-flow with Claude Code integration.
++
++## 📚 Documentation Index
++
++### Core Documentation
++
++- **[ISSUE-BEST-PRACTICES.md](./ISSUE-BEST-PRACTICES.md)** - Complete best practices guide
++  - Issue types and categories
++  - Structure and formatting guidelines
++  - Naming conventions and labeling strategy
++  - Dos and don'ts
++  - Swarm coordination patterns
++  - Quality checklist
++
++### Templates
++
++All templates are located in `./templates/`:
++
++| Template | Use Case | Complexity |
++|----------|----------|------------|
++| [bug-report.md](./templates/bug-report.md) | Bug defects and errors | Medium |
++| [feature-request.md](./templates/feature-request.md) | New features and capabilities | High |
++| [enhancement.md](./templates/enhancement.md) | Improvements to existing features | Medium |
++| [documentation.md](./templates/documentation.md) | Documentation updates | Low |
++| [integration-task.md](./templates/integration-task.md) | Complex multi-component integrations | High |
++| [rollback-incident.md](./templates/rollback-incident.md) | Incident reports and rollbacks | High |
++| [swarm-task.md](./templates/swarm-task.md) | Multi-agent coordination tasks | High |
++
++### Integration Guides
++
++- **[integration/CLAUDE-CODE-INTEGRATION.md](./integration/CLAUDE-CODE-INTEGRATION.md)** - Claude Code integration
++  - Plugin integration examples
++  - Command integration patterns
++  - Skill usage guidelines
++  - Automation workflows
++
++---
++
++## 🚀 Quick Start
++
++### Creating Your First Issue
++
++1. **Choose the right template** based on your need:
++   - Bug? Use `bug-report.md`
++   - New feature? Use `feature-request.md`
++   - Improvement? Use `enhancement.md`
++
++2. **Follow the template structure**:
++   - Fill in all required sections
++   - Use checkboxes for task tracking
++   - Apply appropriate labels
++   - Consider swarm coordination for complex tasks
++
++3. **Create the issue**:
++   ```bash
++   gh issue create \
++     --title "[TYPE] Clear, Descriptive Title" \
++     --body "$(cat filled-template.md)" \
++     --label "type,priority,area"
++   ```
++
++### Using Claude Code Skills
++
++Leverage the GitHub Project Management skill:
++
++```bash
++# The skill is automatically available in Claude Code
++# Simply reference it in your request:
++# "Create a comprehensive issue for [feature] using best practices"
++```
++
++### Swarm Coordination
++
++For complex issues requiring multi-agent coordination:
++
++```bash
++# Initialize swarm
++npx claude-flow@alpha hooks pre-task \
++  --description "Issue: [title]" \
++  --session-id "issue-[number]"
++
++# During work
++npx claude-flow@alpha hooks notify \
++  --message "Completed [milestone]" \
++  --memory-key "issue/[number]/progress"
++
++# Finalize
++npx claude-flow@alpha hooks post-task \
++  --task-id "issue-[number]"
++```
++
++---
++
++## 📋 Issue Type Quick Reference
++
++### 🐛 Bug Reports
++- **When**: Code defects, errors, unexpected behavior
++- **Template**: [bug-report.md](./templates/bug-report.md)
++- **Key Sections**: Root cause, reproduction steps, solution
++- **Example**: `[BUG] MCP Pattern Store Not Persisting Data`
++
++### ✨ Feature Requests
++- **When**: New functionality or capabilities
++- **Template**: [feature-request.md](./templates/feature-request.md)
++- **Key Sections**: Use cases, implementation approach, acceptance criteria
++- **Example**: `[FEATURE] Real-time Collaboration with WebSockets`
++
++### 🔧 Enhancements
++- **When**: Improvements to existing features
++- **Template**: [enhancement.md](./templates/enhancement.md)
++- **Key Sections**: Current limitations, proposed improvements, performance impact
++- **Example**: `[ENHANCEMENT] Optimize Swarm Coordination Performance`
++
++### 📚 Documentation
++- **When**: Documentation updates, additions, corrections
++- **Template**: [documentation.md](./templates/documentation.md)
++- **Key Sections**: Documentation type, structure, examples
++- **Example**: `[DOCS] Update Integration Guides for v2.7.1`
++
++### 🔄 Integration Tasks
++- **When**: Complex multi-component integrations
++- **Template**: [integration-task.md](./templates/integration-task.md)
++- **Key Sections**: Components, integration areas, testing strategy
++- **Example**: `[INTEGRATION] Complete Claude-Flow and Ruv-Swarm Integration`
++
++### 🚨 Incident Reports
++- **When**: Production issues, rollbacks, critical failures
++- **Template**: [rollback-incident.md](./templates/rollback-incident.md)
++- **Key Sections**: Timeline, root cause, prevention measures
++- **Example**: `🔄 Rollback Incident: v2.7.0 Deployment Failure`
++
++### 🐝 Swarm Tasks
++- **When**: Multi-agent coordination required
++- **Template**: [swarm-task.md](./templates/swarm-task.md)
++- **Key Sections**: Swarm configuration, agent assignment, coordination protocol
++- **Example**: `[SWARM] Multi-Repo Version Alignment and Synchronization`
++
++---
++
++## 🏷️ Labeling Strategy
++
++### By Type
++- `bug`, `enhancement`, `feature`, `documentation`, `integration`, `incident`, `swarm-task`
++
++### By Priority
++- `critical`, `high-priority`, `medium-priority`, `low-priority`
++
++### By Status
++- `in-progress`, `blocked`, `needs-review`, `ready-for-merge`, `stale`
++
++### By Area
++- `mcp`, `neural`, `github`, `swarm`, `hooks`, `memory`, `performance`
++
++### By Agent Type
++- `swarm-debugger`, `swarm-feature`, `swarm-optimizer`, `swarm-ready`
++
++---
++
++## 🎯 Best Practices Summary
++
++### ✅ DO
++
++1. Write clear, descriptive titles with type prefix
++2. Include complete reproduction steps for bugs
++3. Break down complex tasks with checkboxes
++4. Link related issues and PRs
++5. Use consistent formatting and emojis
++6. Define clear acceptance criteria
++7. Update progress regularly
++8. Apply appropriate labels
++9. Consider swarm coordination for complexity
++10. Provide complete context
++
++### ❌ DON'T
++
++1. Use vague titles
++2. Skip environment details for bugs
++3. Create duplicate issues
++4. Mix multiple unrelated issues
++5. Use issues for questions
++6. Forget to update status
++7. Skip testing requirements
++8. Ignore related work
++9. Use informal language
++10. Leave orphaned issues
++
++---
++
++## 🐝 Swarm Coordination Guide
++
++### When to Use Swarm
++
++- **Complex Multi-Step Tasks** (3+ major steps)
++- **Parallel Execution Opportunities** (independent subtasks)
++- **Multiple Skill Requirements** (different agent types)
++- **Large-Scale Operations** (multiple components)
++
++### Topology Selection
++
++| Topology | Best For | Example Use Case |
++|----------|----------|------------------|
++| **Mesh** | Parallel, independent tasks | Feature development with frontend, backend, testing in parallel |
++| **Hierarchical** | Coordinated workflows with dependencies | Release management with stage gates |
++| **Ring** | Sequential processing with handoffs | CI/CD pipeline stages |
++| **Star** | Centralized coordination with distributed workers | Issue triage and routing |
++
++### Agent Types
++
++- **Coordinator/Queen**: Overall orchestration
++- **Analyst**: Technical analysis and code review
++- **Coder/Developer**: Implementation work
++- **Tester/QA**: Test creation and validation
++- **Security**: Security audits
++- **Documenter**: Documentation creation
++- **Debugger**: Bug investigation
++- **Optimizer**: Performance optimization
++- **Architect**: System design
++
++---
++
++## 📊 Quality Checklist
++
++### Before Creating an Issue
++
++- [ ] Searched existing issues for duplicates
++- [ ] Selected appropriate template
++- [ ] Written clear, descriptive title (50-80 chars)
++- [ ] Included comprehensive overview
++- [ ] Defined specific objectives
++- [ ] Added all required sections
++- [ ] Applied appropriate labels
++- [ ] Considered swarm coordination
++- [ ] Proofread for clarity
++
++### During Issue Lifecycle
++
++- [ ] Updated status regularly
++- [ ] Checked off completed objectives
++- [ ] Posted blockers immediately
++- [ ] Updated labels as needed
++- [ ] Responded to questions
++- [ ] Linked PRs when created
++- [ ] Maintained professional communication
++
++### Before Closing
++
++- [ ] All objectives completed
++- [ ] Tests written and passing
++- [ ] Documentation updated
++- [ ] PR merged (if applicable)
++- [ ] Verified in production/staging
++- [ ] Posted completion summary
++
++---
++
++## 🔗 Related Resources
++
++### Internal Documentation
++- [GitHub Project Management Skill](../../.claude/skills/github-project-management/SKILL.md)
++- [Issue Tracker Agent](../../.claude/agents/github/issue-tracker.md)
++- [Swarm Issue Agent](../../.claude/agents/github/swarm-issue.md)
++- [GitHub Workflow Automation](../../.claude/skills/github-workflow-automation/SKILL.md)
++
++### External Resources
++- [GitHub Issues Documentation](https://docs.github.com/en/issues)
++- [GitHub CLI Manual](https://cli.github.com/manual/)
++- [Claude Flow Documentation](https://github.com/ruvnet/claude-flow)
++- [Ruv Swarm Documentation](https://github.com/ruvnet/ruv-swarm)
++
++---
++
++## 🤝 Contributing
++
++To improve these best practices and templates:
++
++1. **Propose Changes**: Open an issue with your suggestions
++2. **Submit Updates**: Create a PR with template improvements
++3. **Share Examples**: Contribute real-world examples
++4. **Report Issues**: Let us know if something isn't clear
++
++---
++
++## 📜 Version History
++
++- **v1.0.0** (2025-10-23): Initial comprehensive best-practices documentation
++  - 7 issue templates
++  - Complete best-practices guide
++  - Claude Code integration guide
++  - Swarm coordination patterns
++
++---
++
++**Maintained By**: Claude Code
++**Last Updated**: 2025-10-23
++**Repository**: [ai-claude-flow](https://github.com/fontestad-ai/ai-claude-flow)
+diff --git a/docs/best-practices/issues/integration/CLAUDE-CODE-INTEGRATION.md b/docs/best-practices/issues/integration/CLAUDE-CODE-INTEGRATION.md
+new file mode 100644
+index 00000000..9b0be51c
+--- /dev/null
++++ b/docs/best-practices/issues/integration/CLAUDE-CODE-INTEGRATION.md
+@@ -0,0 +1,298 @@
++# Claude Code Integration Guide for Issue Management
++
++## Table of Contents
++
++1. [Overview](#overview)
++2. [Integration with Claude Code Plugins](#integration-with-claude-code-plugins)
++3. [Integration with Claude Code Commands](#integration-with-claude-code-commands)
++4. [Integration with Claude Code Skills](#integration-with-claude-code-skills)
++5. [Automation Examples](#automation-examples)
++6. [Best Practices](#best-practices)
++
++---
++
++## Overview
++
++This guide explains how to leverage Claude Code plugins, commands, and skills to implement the issue best practices defined in [ISSUE-BEST-PRACTICES.md](../ISSUE-BEST-PRACTICES.md).
++
++### Key Integration Points
++
++1. **Plugins**: Extend Claude Code functionality for issue management
++2. **Commands**: Automate common issue operations
++3. **Skills**: Comprehensive workflows for GitHub project management
++4. **MCP Tools**: Deep integration with ruv-swarm and claude-flow
++
++---
++
++## Integration with Claude Code Plugins
++
++### What Are Claude Code Plugins?
++
++Claude Code plugins extend the core functionality of Claude Code. They can:
++- Add new MCP tools
++- Enhance existing workflows
++- Provide specialized capabilities
++
++### Issue Management Plugin Example
++
++**Location**: `.claude-plugin/`
++
++#### Plugin Structure
++
++```
++.claude-plugin/
++├── package.json
++├── README.md
++├── src/
++│   ├── tools/
++│   │   ├── issue-create.js
++│   │   ├── issue-triage.js
++│   │   ├── issue-track.js
++│   │   └── swarm-coordinate.js
++│   └── index.js
++└── docs/
++    └── INSTALLATION.md
++```
++
++#### Example Plugin Implementation
++
++**`.claude-plugin/src/tools/issue-create.js`**
++
++```javascript
++/**
++ * Claude Code Plugin: Issue Creator
++ * Implements best-practice issue creation with template selection
++ */
++
++export class IssueCreator {
++  constructor(config) {
++    this.config = config;
++    this.templates = this.loadTemplates();
++  }
++
++  /**
++   * Load issue templates from docs/best-practices/issues/templates/
++   */
++  loadTemplates() {
++    const templatesPath = path.join(
++      __dirname,
++      '../../../docs/best-practices/issues/templates'
++    );
++
++    return {
++      bug: fs.readFileSync(path.join(templatesPath, 'bug-report.md'), 'utf8'),
++      feature: fs.readFileSync(path.join(templatesPath, 'feature-request.md'), 'utf8'),
++      enhancement: fs.readFileSync(path.join(templatesPath, 'enhancement.md'), 'utf8'),
++      docs: fs.readFileSync(path.join(templatesPath, 'documentation.md'), 'utf8'),
++      integration: fs.readFileSync(path.join(templatesPath, 'integration-task.md'), 'utf8'),
++      incident: fs.readFileSync(path.join(templatesPath, 'rollback-incident.md'), 'utf8'),
++      swarm: fs.readFileSync(path.join(templatesPath, 'swarm-task.md'), 'utf8'),
++    };
++  }
++
++  /**
++   * Create issue with intelligent template selection
++   */
++  async createIssue(options) {
++    const { type, title, details, swarmReady = false } = options;
++
++    // Select appropriate template
++    const template = this.templates[type];
++    if (!template) {
++      throw new Error(`Unknown issue type: ${type}`);
++    }
++
++    // Fill in template with provided details
++    const issueBody = this.fillTemplate(template, details);
++
++    // Suggest labels based on content
++    const labels = this.suggestLabels(type, details, swarmReady);
++
++    // Create issue via gh CLI
++    const command = [
++      'gh', 'issue', 'create',
++      '--title', `"${title}"`,
++      '--body', `"${issueBody}"`,
++      '--label', labels.join(',')
++    ];
++
++    if (swarmReady) {
++      // Initialize swarm coordination for complex issues
++      await this.initializeSwarm(details);
++    }
++
++    return execSync(command.join(' '), { encoding: 'utf8' });
++  }
++
++  /**
++   * Intelligent label suggestion based on content analysis
++   */
++  suggestLabels(type, details, swarmReady) {
++    const labels = [type];
++
++    // Analyze content for additional labels
++    const content = JSON.stringify(details).toLowerCase();
++
++    // Priority labels
++    if (content.includes('critical') || content.includes('urgent')) {
++      labels.push('critical');
++    } else if (content.includes('high priority')) {
++      labels.push('high-priority');
++    }
++
++    // Area labels
++    const areaKeywords = {
++      mcp: ['mcp', 'server', 'protocol'],
++      neural: ['neural', 'pattern', 'training'],
++      swarm: ['swarm', 'agent', 'coordination'],
++      github: ['github', 'repository', 'pr', 'issue'],
++    };
++
++    Object.entries(areaKeywords).forEach(([area, keywords]) => {
++      if (keywords.some(kw => content.includes(kw))) {
++        labels.push(area);
++      }
++    });
++
++    // Swarm labels
++    if (swarmReady) {
++      labels.push('swarm-ready');
++    }
++
++    return labels;
++  }
++
++  /**
++   * Initialize swarm coordination for complex issues
++   */
++  async initializeSwarm(details) {
++    const { topology = 'mesh', maxAgents = 4 } = details.swarmConfig || {};
++
++    // Initialize swarm using MCP tools
++    await this.mcp.call('swarm_init', {
++      topology,
++      maxAgents
++    });
++
++    // Store issue context in swarm memory
++    await this.mcp.call('memory_usage', {
++      action: 'store',
++      key: `issue/${details.number}/context`,
++      value: JSON.stringify(details)
++    });
++  }
++}
++```
++
++#### Plugin Registration
++
++**`.claude-plugin/src/index.js`**
++
++```javascript
++import { IssueCreator } from './tools/issue-create.js';
++import { IssueTriage } from './tools/issue-triage.js';
++import { IssueTracker } from './tools/issue-track.js';
++
++export default {
++  name: 'issue-management',
++  version: '1.0.0',
++  description: 'Comprehensive issue management with best practices',
++
++  tools: [
++    {
++      name: 'issue_create',
++      description: 'Create issue with best-practice templates',
++      handler: IssueCreator,
++    },
++    {
++      name: 'issue_triage',
++      description: 'Intelligent issue triage and labeling',
++      handler: IssueTriage,
++    },
++    {
++      name: 'issue_track',
++      description: 'Track issue progress with swarm coordination',
++      handler: IssueTracker,
++    },
++  ],
++
++  async initialize(context) {
++    // Plugin initialization
++    console.log('Issue Management Plugin initialized');
++    return {
++      templatesLoaded: true,
++      swarmEnabled: true,
++    };
++  },
++};
++```
++
++---
++
++## Integration with Claude Code Commands
++
++### What Are Claude Code Commands?
++
++Commands are markdown files in `.claude/commands/` that provide reusable workflows.
++
++### Issue Management Commands
++
++#### Command: Create Issue
++
++**Location**: `.claude/commands/github/create-issue.md`
++
++```markdown
++# create-issue
++
++Create a comprehensive GitHub issue using best-practice templates.
++
++## Usage
++
++Create an issue by type:
++- **bug**: Bug reports with root cause analysis
++- **feature**: Feature requests with use cases
++- **enhancement**: Improvements to existing features
++- **docs**: Documentation updates
++- **integration**: Complex integrations
++- **incident**: Rollback incidents
++- **swarm**: Multi-agent coordination tasks
++
++## Process
++
++1. **Gather Requirements**
++   - Ask user for issue type
++   - Request title and description
++   - Determine if swarm coordination needed
++
++2. **Select Template**
++   - Load appropriate template from docs/best-practices/issues/templates/
++   - Guide user through required sections
++
++3. **Analyze Content**
++   - Suggest labels based on content analysis
++   - Recommend priority level
++   - Identify related issues
++
++4. **Create Issue**
++   \`\`\`bash
++   gh issue create \\
++     --title "[TYPE] Clear Title" \\
++     --body "$(cat filled-template.md)" \\
++     --label "type,priority,area"
++   \`\`\`
++
++5. **Initialize Swarm** (if complex)
++   \`\`\`bash
++   npx claude-flow@alpha hooks pre-task \\
++     --description "Issue #123: [title]" \\
++     --session-id "issue-123"
++   \`\`\`
++
++6. **Return Issue URL**
++   Provide user with issue URL and next steps
++
++## Examples
++
++### Example 1: Bug Report
++\`\`\`
++User: "Create a bug report for memory leak in SwarmCoordinator"
+\ No newline at end of file
+diff --git a/docs/best-practices/issues/templates/bug-report.md b/docs/best-practices/issues/templates/bug-report.md
+new file mode 100644
+index 00000000..c8bd8b08
+--- /dev/null
++++ b/docs/best-practices/issues/templates/bug-report.md
+@@ -0,0 +1,273 @@
++---
++name: 🐛 Bug Report
++about: Report a defect, error, or unexpected behavior
++title: '[BUG] Clear, Descriptive Title'
++labels: ['bug']
++assignees: ''
++---
++
++## 🐛 Bug Description
++
++<!-- Provide a clear and concise description of the bug -->
++
++[Describe what's not working as expected]
++
++---
++
++## 📊 Impact Assessment
++
++- **Severity**: 🔴 Critical | 🟡 High | 🟢 Medium | ⚪ Low
++- **Affected Users**: [number, percentage, or description]
++- **Data Loss Risk**: ✅ Yes | ❌ No
++- **Workaround Available**: ✅ Yes | ❌ No
++- **Discovery Method**: [How was this bug found]
++
++### Impact Details
++
++- **Production Impact**: [Description of production effects]
++- **User-Facing**: ✅ Yes | ❌ No
++- **Performance Degradation**: [% or description]
++- **Security Implications**: [Any security concerns]
++
++---
++
++## 🔍 Root Cause Analysis
++
++<!-- Technical explanation of why the bug occurs -->
++
++### Primary Cause
++[Main technical reason for the bug]
++
++### Contributing Factors
++- Factor 1: [Description]
++- Factor 2: [Description]
++- Factor 3: [Description]
++
++### Code Location
++**File**: `path/to/file.js` (lines X-Y)
++
++```javascript
++// Problematic code snippet
++const example = "code here";
++```
++
++---
++
++## 🔄 Reproduction Steps
++
++<!-- Detailed steps to reproduce the behavior -->
++
++1. [Step 1]
++2. [Step 2]
++3. [Step 3]
++4. [Step 4]
++
++### Expected Behavior
++[What should happen]
++
++### Actual Behavior
++[What actually happens]
++
++### Minimal Reproducible Example
++
++```javascript
++// Minimal code to demonstrate the bug
++const reproduce = () => {
++  // code here
++};
++```
++
++---
++
++## 🌍 Environment
++
++- **Package Version**: vX.Y.Z
++- **Node.js Version**: vX.Y.Z
++- **npm/yarn Version**: vX.Y.Z
++- **Operating System**: [OS and version]
++- **Platform**: [Additional platform details]
++
++### Additional Context
++
++- **Related Configuration**: [Any relevant config]
++- **Dependencies**: [Relevant dependency versions]
++- **Environment Variables**: [Any relevant env vars]
++
++---
++
++## ✅ Solution Implemented
++
++<!-- Detailed explanation of the fix (fill after implementation) -->
++
++### Approach
++[High-level approach to fixing the bug]
++
++### Implementation Details
++
++#### Changes Made
++
++**File**: `path/to/file.js`
++```javascript
++// Fixed code
++const fixed = "corrected code";
++```
++
++**Reasoning**: [Why this approach was chosen]
++
++### Backward Compatibility
++- ✅ Fully backward compatible
++- ⚠️ Minor breaking changes (with migration path)
++- 🔴 Breaking changes (major version bump)
++
++---
++
++## 🧪 Testing
++
++### Unit Tests
++- **Test File**: `tests/path/to/test.js`
++- **Coverage**: X% (target: 90%+)
++- **New Tests Added**: X
++
++```javascript
++// Example test case
++describe('Bug Fix: Description', () => {
++  it('should work correctly', () => {
++    // test code
++  });
++});
++```
++
++### Integration Tests
++- [ ] Integration test 1
++- [ ] Integration test 2
++
++### Manual Testing
++- [ ] Tested scenario 1
++- [ ] Tested scenario 2
++- [ ] Verified edge cases
++
++---
++
++## ✔️ Verification Steps
++
++<!-- Steps to verify the fix works -->
++
++1. [Verification step 1]
++2. [Verification step 2]
++3. [Verification step 3]
++
++### Test Commands
++
++```bash
++# Run specific test
++npm test -- --grep "bug fix"
++
++# Verify build
++npm run build
++
++# Manual verification
++npx claude-flow [command to verify]
++```
++
++---
++
++## 📈 Performance Impact
++
++### Before Fix
++- **Metric 1**: [value]
++- **Metric 2**: [value]
++
++### After Fix
++- **Metric 1**: [value]
++- **Metric 2**: [value]
++- **Improvement**: [% or description]
++
++---
++
++## 🐝 Swarm Coordination (if applicable)
++
++**Required**: ✅ Yes | ❌ No
++
++### Swarm Configuration
++- **Topology**: mesh | hierarchical | ring | star
++- **Max Agents**: [number]
++
++### Agent Assignment
++- **Debugger**: Root cause investigation
++- **Coder**: Fix implementation
++- **Tester**: Test creation and validation
++- **Reviewer**: Code review and verification
++
++### Coordination Protocol
++
++```bash
++# Pre-task
++npx claude-flow@alpha hooks pre-task --description "Bug fix: [title]"
++
++# During task
++npx claude-flow@alpha hooks notify --message "Fix implemented"
++
++# Post-task
++npx claude-flow@alpha hooks post-task --task-id "bug-[number]"
++```
++
++---
++
++## ✅ Completion Checklist
++
++### Implementation
++- [ ] Root cause identified and documented
++- [ ] Fix implemented and tested
++- [ ] Code reviewed and approved
++- [ ] Documentation updated
++
++### Testing
++- [ ] Unit tests written (90%+ coverage)
++- [ ] Integration tests passing
++- [ ] Manual testing completed
++- [ ] Edge cases verified
++- [ ] Performance impact assessed
++
++### Release
++- [ ] Changelog updated
++- [ ] Version bumped appropriately
++- [ ] Migration guide created (if needed)
++- [ ] PR created and linked
++- [ ] Deployed to staging
++- [ ] Verified in production
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Depends on #
++- Blocks #
++- Duplicate of #
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, screenshots, logs, etc. -->
++
++### Logs/Stack Traces
++
++```
++[Paste relevant logs or stack traces]
++```
++
++### Screenshots
++
++<!-- If applicable, add screenshots to help explain the problem -->
++
++---
++
++**Metadata**
++- **Fix Version**: vX.Y.Z (proposed)
++- **Priority**: Critical | High | Medium | Low
++- **Type**: Bug Fix
++- **Module**: [Component/Module name]
++- **Regression**: ✅ Yes (introduced in vX.Y.Z) | ❌ No
+diff --git a/docs/best-practices/issues/templates/documentation.md b/docs/best-practices/issues/templates/documentation.md
+new file mode 100644
+index 00000000..b24aaa79
+--- /dev/null
++++ b/docs/best-practices/issues/templates/documentation.md
+@@ -0,0 +1,416 @@
++---
++name: 📚 Documentation
++about: Documentation updates, additions, or corrections
++title: '[DOCS] Clear, Descriptive Title'
++labels: ['documentation']
++assignees: ''
++---
++
++## 📚 Documentation Overview
++
++<!-- Clear description of documentation need -->
++
++[Describe what documentation needs to be updated, added, or corrected]
++
++---
++
++## 🎯 Documentation Type
++
++- [ ] **API Documentation** - Interface, methods, parameters
++- [ ] **User Guide** - How-to guides and tutorials
++- [ ] **Developer Guide** - Architecture, contributing, development
++- [ ] **Configuration Guide** - Setup and configuration
++- [ ] **Troubleshooting Guide** - Common issues and solutions
++- [ ] **Migration Guide** - Version upgrade instructions
++- [ ] **Release Notes** - Changelog and release information
++- [ ] **Examples** - Code examples and samples
++- [ ] **README** - Project overview and quick start
++- [ ] **Other**: [Specify type]
++
++---
++
++## 📋 Current State
++
++### What Exists
++[Describe current documentation, if any]
++
++### Issues with Current Documentation
++- [ ] **Outdated**: Information is no longer accurate
++- [ ] **Incomplete**: Missing important details
++- [ ] **Incorrect**: Contains errors or inaccuracies
++- [ ] **Unclear**: Confusing or poorly explained
++- [ ] **Missing**: Documentation doesn't exist
++- [ ] **Poorly Organized**: Hard to find information
++- [ ] **Lacks Examples**: Needs more code samples
++- [ ] **Other**: [Specify issue]
++
++---
++
++## ✨ Proposed Documentation
++
++### Objectives
++- [ ] Objective 1: [Specific documentation goal]
++- [ ] Objective 2: [Specific documentation goal]
++- [ ] Objective 3: [Specific documentation goal]
++
++### Scope
++
++#### What Will Be Documented
++- Item 1: [Description]
++- Item 2: [Description]
++- Item 3: [Description]
++
++#### What Will NOT Be Documented
++- Item 1: [Explanation of why]
++- Item 2: [Explanation of why]
++
++---
++
++## 📝 Documentation Structure
++
++### Proposed Outline
++
++```markdown
++# Main Title
++
++## Section 1: Overview
++- Subsection 1.1
++- Subsection 1.2
++
++## Section 2: Getting Started
++- Subsection 2.1: Installation
++- Subsection 2.2: Quick Start
++- Subsection 2.3: Basic Configuration
++
++## Section 3: Core Concepts
++- Subsection 3.1
++- Subsection 3.2
++
++## Section 4: API Reference
++- Subsection 4.1: Methods
++- Subsection 4.2: Parameters
++- Subsection 4.3: Return Values
++
++## Section 5: Advanced Topics
++- Subsection 5.1
++- Subsection 5.2
++
++## Section 6: Examples
++- Example 1
++- Example 2
++
++## Section 7: Troubleshooting
++- Common Issues
++- FAQ
++
++## Section 8: Additional Resources
++```
++
++---
++
++## 💡 Content Requirements
++
++### Information to Include
++
++#### For API Documentation
++- [ ] Function/method signatures
++- [ ] Parameter descriptions and types
++- [ ] Return value descriptions and types
++- [ ] Error codes and exceptions
++- [ ] Code examples for each method
++- [ ] Best practices
++- [ ] Common pitfalls
++
++#### For User Guides
++- [ ] Step-by-step instructions
++- [ ] Screenshots/diagrams (if applicable)
++- [ ] Prerequisites
++- [ ] Expected outcomes
++- [ ] Common issues and solutions
++- [ ] Next steps
++- [ ] Related guides
++
++#### For Developer Guides
++- [ ] Architecture overview
++- [ ] Development setup
++- [ ] Build instructions
++- [ ] Test instructions
++- [ ] Contribution guidelines
++- [ ] Code style guide
++- [ ] Release process
++
++#### For Configuration Guides
++- [ ] All configuration options
++- [ ] Default values
++- [ ] Valid value ranges
++- [ ] Examples for common scenarios
++- [ ] Environment variables
++- [ ] Configuration file formats
++
++---
++
++## 📊 Content Strategy
++
++### Target Audience
++- [ ] End Users
++- [ ] Developers
++- [ ] Contributors
++- [ ] System Administrators
++- [ ] Other: [Specify]
++
++### Skill Level
++- [ ] Beginner
++- [ ] Intermediate
++- [ ] Advanced
++- [ ] Mixed (progressive disclosure)
++
++### Tone & Style
++- [ ] Formal/Technical
++- [ ] Conversational/Accessible
++- [ ] Tutorial-based
++- [ ] Reference-style
++
++---
++
++## 🎨 Formatting Guidelines
++
++### Structure
++- Use clear, hierarchical headings (H1, H2, H3)
++- Include table of contents for long documents
++- Use progressive disclosure (collapsible sections)
++- Provide navigation links
++
++### Code Examples
++```markdown
++\`\`\`javascript
++// Always include:
++// 1. Language hint for syntax highlighting
++// 2. Inline comments explaining key parts
++// 3. Complete, runnable examples
++
++const example = "well-documented code";
++// Explanation of what this does
++\`\`\`
++
++\`\`\`bash
++# Command-line examples with expected output
++$ npm install package
++# Output:
++# added 1 package, and audited 2 packages in 1s
++\`\`\`
++```
++
++### Visual Elements
++- [ ] **Diagrams**: Architecture, flow charts, etc.
++- [ ] **Screenshots**: UI elements, configurations
++- [ ] **Tables**: Comparison tables, parameter lists
++- [ ] **Callouts**: Notes, warnings, tips
++
++```markdown
++> **Note**: Important information
++> **Warning**: Critical warnings
++> **Tip**: Helpful suggestions
++```
++
++### Links & References
++- Link to related documentation
++- Link to source code when relevant
++- Include external resources
++- Provide "See Also" sections
++
++---
++
++## ✅ Examples to Include
++
++### Example 1: [Title]
++**Scenario**: [When to use this]
++
++```javascript
++// Complete, runnable code example
++const example1 = () => {
++  // Implementation
++};
++```
++
++**Expected Output**:
++```
++Output here
++```
++
++### Example 2: [Title]
++**Scenario**: [When to use this]
++
++```javascript
++// Complete, runnable code example
++const example2 = () => {
++  // Implementation
++};
++```
++
++**Expected Output**:
++```
++Output here
++```
++
++### Example 3: [Title]
++**Scenario**: [When to use this]
++
++```javascript
++// Complete, runnable code example
++const example3 = () => {
++  // Implementation
++};
++```
++
++---
++
++## 🔍 Accuracy & Review
++
++### Technical Accuracy
++- [ ] All code examples tested and verified
++- [ ] All commands tested
++- [ ] All configuration tested
++- [ ] Version compatibility verified
++- [ ] Links verified (not broken)
++
++### Review Process
++- [ ] Self-review for clarity and completeness
++- [ ] Technical review by subject matter expert
++- [ ] User review for comprehension
++- [ ] Copy editing for grammar and style
++
++### Version Information
++- **Applies to Version**: vX.Y.Z
++- **Last Verified**: YYYY-MM-DD
++- **Next Review Date**: YYYY-MM-DD
++
++---
++
++## 🐝 Swarm Coordination
++
++**Recommended**: ✅ Yes (for large documentation projects) | ❌ No
++
++### Swarm Configuration
++- **Topology**: star (coordinator with specialist writers)
++- **Max Agents**: 3-5
++
++### Agent Assignment
++- **Coordinator**: Overall structure and consistency
++- **Technical Writer**: API and developer docs
++- **Tutorial Writer**: User guides and examples
++- **Editor**: Copy editing and review
++
++### Task Breakdown
++- [ ] **Coordinator**: Create outline and structure
++- [ ] **Technical Writer**: Write API documentation
++- [ ] **Tutorial Writer**: Write user guides and examples
++- [ ] **Editor**: Review for clarity and consistency
++- [ ] **All**: Test all examples and commands
++
++---
++
++## 🔗 Related Documentation
++
++<!-- Link to related documentation -->
++
++- Related docs: [Link to related documentation]
++- Supersedes: [Link to old documentation being replaced]
++- Part of: [Link to parent documentation]
++
++---
++
++## 📂 File Locations
++
++### Files to Create/Update
++
++```
++docs/
++├── api/
++│   └── [new-api-doc].md
++├── guides/
++│   ├── user/
++│   │   └── [new-user-guide].md
++│   └── developer/
++│       └── [new-dev-guide].md
++├── examples/
++│   └── [new-example].md
++└── README.md (update)
++```
++
++---
++
++## ✅ Completion Checklist
++
++### Writing
++- [ ] Outline created and approved
++- [ ] All sections written
++- [ ] All code examples written and tested
++- [ ] All images/diagrams created
++- [ ] All links added and verified
++
++### Review
++- [ ] Technical accuracy verified
++- [ ] Code examples tested
++- [ ] Grammar and style checked
++- [ ] Reviewed by subject matter expert
++- [ ] User-tested for comprehension
++
++### Publishing
++- [ ] Files organized in correct locations
++- [ ] Table of contents updated
++- [ ] Index updated (if applicable)
++- [ ] Changelog updated
++- [ ] PR created
++- [ ] Documentation deployed
++
++### Post-Publication
++- [ ] Announced to users (if major update)
++- [ ] Feedback collected
++- [ ] Review schedule set
++
++---
++
++## 📈 Success Metrics
++
++### Documentation Quality
++- [ ] All examples are runnable
++- [ ] All links work
++- [ ] Clear and easy to understand
++- [ ] Comprehensive coverage
++
++### User Impact
++- **Reduced Support Questions**: [Target %]
++- **User Satisfaction**: [Target score]
++- **Documentation Usage**: [Target views/month]
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Documents #
++- Part of #
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, research, references -->
++
++### References
++- [External documentation reference 1]
++- [External documentation reference 2]
++
++### Screenshots/Mockups
++<!-- Include mockups if planning significant structural changes -->
++
++---
++
++**Metadata**
++- **Target Version**: vX.Y.Z
++- **Priority**: High | Medium | Low
++- **Complexity**: High | Medium | Low
++- **Estimated Effort**: [hours/days]
++- **Documentation Type**: API | User Guide | Developer Guide | Other
+diff --git a/docs/best-practices/issues/templates/enhancement.md b/docs/best-practices/issues/templates/enhancement.md
+new file mode 100644
+index 00000000..cf234d2f
+--- /dev/null
++++ b/docs/best-practices/issues/templates/enhancement.md
+@@ -0,0 +1,415 @@
++---
++name: 🔧 Enhancement
++about: Propose improvements to existing functionality
++title: '[ENHANCEMENT] Clear, Descriptive Title'
++labels: ['enhancement']
++assignees: ''
++---
++
++## 🔧 Enhancement Overview
++
++<!-- Clear description of what you want to improve -->
++
++[Describe the improvement to existing functionality]
++
++---
++
++## 🎯 Current State
++
++### Current Behavior
++[Describe how the feature currently works]
++
++### Current Limitations
++- **Limitation 1**: [Description and impact]
++- **Limitation 2**: [Description and impact]
++- **Limitation 3**: [Description and impact]
++
++### Pain Points
++- **Pain Point 1**: [What makes current implementation difficult]
++- **Pain Point 2**: [What makes current implementation difficult]
++
++---
++
++## ✨ Proposed Enhancement
++
++### Desired Behavior
++[Describe how the feature should work after enhancement]
++
++### Key Improvements
++- [ ] **Improvement 1**: [Specific enhancement]
++  - **Benefit**: [Value delivered]
++  - **Impact**: [Who benefits and how]
++
++- [ ] **Improvement 2**: [Specific enhancement]
++  - **Benefit**: [Value delivered]
++  - **Impact**: [Who benefits and how]
++
++- [ ] **Improvement 3**: [Specific enhancement]
++  - **Benefit**: [Value delivered]
++  - **Impact**: [Who benefits and how]
++
++---
++
++## 💡 Motivation & Benefits
++
++### Problem Being Solved
++[Why is this enhancement needed?]
++
++### Expected Benefits
++
++#### User Benefits
++- **Benefit 1**: [How users benefit]
++- **Benefit 2**: [How users benefit]
++- **Benefit 3**: [How users benefit]
++
++#### Developer Benefits
++- **Benefit 1**: [How developers benefit]
++- **Benefit 2**: [How developers benefit]
++
++#### Business Benefits
++- **Benefit 1**: [Business value]
++- **Benefit 2**: [Business value]
++
++### Success Metrics
++- **Metric 1**: [How improvement will be measured]
++- **Metric 2**: [How improvement will be measured]
++- **Target**: [Specific improvement target]
++
++---
++
++## 🏗️ Implementation Approach
++
++### Technical Strategy
++
++#### Option 1: [Approach Name]
++**Pros**:
++- Pro 1
++- Pro 2
++
++**Cons**:
++- Con 1
++- Con 2
++
++**Estimated Effort**: [hours/days]
++
++#### Option 2: [Approach Name]
++**Pros**:
++- Pro 1
++- Pro 2
++
++**Cons**:
++- Con 1
++- Con 2
++
++**Estimated Effort**: [hours/days]
++
++#### Recommended Approach
++[Which option and why]
++
++---
++
++### Implementation Plan
++
++#### Phase 1: Preparation
++- [ ] Analyze current implementation
++- [ ] Identify affected components
++- [ ] Design enhancement approach
++- [ ] Plan backward compatibility
++
++#### Phase 2: Core Enhancement
++- [ ] Implement core improvements
++- [ ] Update internal APIs (if needed)
++- [ ] Optimize performance
++- [ ] Add new capabilities
++
++#### Phase 3: Integration & Testing
++- [ ] Update dependent components
++- [ ] Write/update tests
++- [ ] Performance testing
++- [ ] Regression testing
++
++#### Phase 4: Documentation & Release
++- [ ] Update API documentation
++- [ ] Update user guides
++- [ ] Write migration guide (if needed)
++- [ ] Prepare release notes
++
++---
++
++## 📊 Performance Improvements
++
++### Current Performance
++- **Metric 1**: [current value]
++- **Metric 2**: [current value]
++- **Metric 3**: [current value]
++
++### Expected Performance
++- **Metric 1**: [target value] ([% improvement])
++- **Metric 2**: [target value] ([% improvement])
++- **Metric 3**: [target value] ([% improvement])
++
++### Benchmarking Plan
++```bash
++# Benchmark current implementation
++npm run benchmark -- --current
++
++# Benchmark enhanced implementation
++npm run benchmark -- --enhanced
++
++# Compare results
++npm run benchmark -- --compare
++```
++
++---
++
++## 🔄 Backward Compatibility
++
++### Breaking Changes
++- ✅ No breaking changes
++- ⚠️ Minor breaking changes (with migration path)
++- 🔴 Major breaking changes (major version bump)
++
++### Migration Strategy
++<!-- If there are breaking changes -->
++
++#### Migration Steps
++1. [Step 1]
++2. [Step 2]
++3. [Step 3]
++
++#### Migration Code Example
++```javascript
++// Before (current implementation)
++const oldWay = currentImplementation();
++
++// After (enhanced implementation)
++const newWay = enhancedImplementation();
++```
++
++### Deprecation Plan
++<!-- If deprecating old functionality -->
++
++- **Deprecation Notice**: vX.Y.Z
++- **Final Removal**: vX.Y.Z
++- **Alternative**: [What to use instead]
++
++---
++
++## 🧪 Testing Strategy
++
++### Unit Tests
++- [ ] Test enhancement core functionality
++- [ ] Test edge cases
++- [ ] Test error conditions
++- **Target Coverage**: Maintain 90%+
++
++```javascript
++// Test examples
++describe('Enhancement: [title]', () => {
++  it('should improve performance', () => {
++    // performance test
++  });
++
++  it('should maintain backward compatibility', () => {
++    // compatibility test
++  });
++
++  it('should handle edge cases', () => {
++    // edge case test
++  });
++});
++```
++
++### Integration Tests
++- [ ] Test with dependent components
++- [ ] Test full workflows
++- [ ] Test upgrade path
++
++### Performance Tests
++- [ ] Benchmark before enhancement
++- [ ] Benchmark after enhancement
++- [ ] Verify improvement targets met
++
++### Regression Tests
++- [ ] Verify existing functionality unchanged
++- [ ] Test all affected features
++- [ ] Validate no performance regressions
++
++---
++
++## 📚 Documentation Updates
++
++### API Documentation
++- [ ] Update method signatures (if changed)
++- [ ] Update examples
++- [ ] Add new capabilities documentation
++- [ ] Update changelog
++
++### User Documentation
++- [ ] Update usage guides
++- [ ] Add new examples
++- [ ] Update best practices
++- [ ] Migration guide (if needed)
++
++### Developer Documentation
++- [ ] Update architecture docs
++- [ ] Update contribution guide
++- [ ] Update testing guide
++
++---
++
++## 🐝 Swarm Coordination
++
++**Recommended**: ✅ Yes | ❌ No
++
++### Swarm Configuration
++- **Topology**: mesh | hierarchical | ring | star
++- **Recommended Topology**: [topology] - [reasoning]
++- **Max Agents**: [number]
++
++### Agent Assignment
++- **Analyst**: Performance analysis and optimization
++- **Coder**: Implementation of enhancements
++- **Tester**: Test creation and validation
++- **Optimizer**: Performance tuning
++- **Documenter**: Documentation updates
++
++### Task Breakdown
++
++#### Analysis Phase
++- [ ] Analyze current implementation (Analyst)
++- [ ] Identify bottlenecks (Analyst)
++- [ ] Benchmark current performance (Optimizer)
++
++#### Implementation Phase
++- [ ] Core enhancement implementation (Coder)
++- [ ] Performance optimization (Optimizer)
++- [ ] API updates (Coder)
++
++#### Validation Phase
++- [ ] Write tests (Tester)
++- [ ] Performance benchmarks (Optimizer)
++- [ ] Integration testing (Tester)
++
++#### Documentation Phase
++- [ ] Update docs (Documenter)
++- [ ] Create examples (Documenter)
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Enhances #
++- Part of #
++- Supersedes #
++
++---
++
++## ✅ Acceptance Criteria
++
++### Functional Criteria
++- [ ] All improvements implemented as specified
++- [ ] Backward compatibility maintained (or migration provided)
++- [ ] New capabilities documented
++- [ ] Examples updated
++
++### Performance Criteria
++- [ ] Performance targets achieved
++- [ ] No performance regressions
++- [ ] Benchmarks documented
++- [ ] Resource usage optimized
++
++### Quality Criteria
++- [ ] Test coverage maintained ≥ 90%
++- [ ] All tests passing
++- [ ] Code reviewed and approved
++- [ ] Documentation complete
++
++---
++
++## 📈 Success Metrics
++
++### Technical Metrics
++- **Performance Improvement**: [target %]
++- **Resource Usage Reduction**: [target %]
++- **Code Quality**: [target score]
++
++### User Metrics
++- **Adoption Rate**: [target %]
++- **User Satisfaction**: [target score]
++- **Error Rate**: [maximum %]
++
++### Business Metrics
++- **Efficiency Gain**: [target %]
++- **Cost Reduction**: [target $]
++- **Time Savings**: [target hours]
++
++---
++
++## 🚀 Rollout Plan
++
++### Phase 1: Development
++- [ ] Implement enhancement
++- [ ] Local testing
++- [ ] Code review
++
++### Phase 2: Staging
++- [ ] Deploy to staging
++- [ ] Performance testing
++- [ ] Integration testing
++
++### Phase 3: Production
++- [ ] Gradual rollout
++- [ ] Monitor metrics
++- [ ] Gather feedback
++
++### Rollback Plan
++- [ ] Rollback procedure documented
++- [ ] Feature flags configured
++- [ ] Monitoring alerts set up
++
++---
++
++## ✅ Completion Checklist
++
++### Implementation
++- [ ] Core enhancement implemented
++- [ ] Performance optimized
++- [ ] Backward compatibility verified
++- [ ] Code reviewed and approved
++
++### Testing
++- [ ] Unit tests (90%+ coverage)
++- [ ] Integration tests passing
++- [ ] Performance tests passing
++- [ ] Regression tests passing
++
++### Documentation
++- [ ] API docs updated
++- [ ] User guides updated
++- [ ] Examples updated
++- [ ] Changelog updated
++
++### Release
++- [ ] Version bumped appropriately
++- [ ] PR created and merged
++- [ ] Deployed to staging
++- [ ] Verified in production
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, benchmarks, research, etc. -->
++
++---
++
++**Metadata**
++- **Target Version**: vX.Y.Z
++- **Priority**: High | Medium | Low
++- **Complexity**: High | Medium | Low
++- **Estimated Effort**: [hours/days/weeks]
++- **Impact**: Breaking | Non-breaking
+diff --git a/docs/best-practices/issues/templates/feature-request.md b/docs/best-practices/issues/templates/feature-request.md
+new file mode 100644
+index 00000000..a6e08618
+--- /dev/null
++++ b/docs/best-practices/issues/templates/feature-request.md
+@@ -0,0 +1,442 @@
++---
++name: ✨ Feature Request
++about: Propose new functionality or capabilities
++title: '[FEATURE] Clear, Descriptive Title'
++labels: ['feature', 'enhancement']
++assignees: ''
++---
++
++## ✨ Feature Description
++
++<!-- Clear, detailed description of the proposed feature -->
++
++[Describe the new feature or capability you'd like to see]
++
++---
++
++## 🎯 Goals & Objectives
++
++### Primary Goals
++- [ ] Goal 1: [Specific, measurable goal]
++- [ ] Goal 2: [Specific, measurable goal]
++- [ ] Goal 3: [Specific, measurable goal]
++
++### Success Metrics
++- **Metric 1**: [How success will be measured]
++- **Metric 2**: [How success will be measured]
++- **Target**: [Specific target to achieve]
++
++---
++
++## 💡 Use Cases
++
++### Use Case 1: [Title]
++- **Actor**: [Who uses this feature]
++- **Context**: [When/where is it used]
++- **Action**: [What the user does]
++- **Outcome**: [Expected result]
++- **Benefit**: [Value delivered]
++
++### Use Case 2: [Title]
++- **Actor**: [Who uses this feature]
++- **Context**: [When/where is it used]
++- **Action**: [What the user does]
++- **Outcome**: [Expected result]
++- **Benefit**: [Value delivered]
++
++### Use Case 3: [Title]
++- **Actor**: [Who uses this feature]
++- **Context**: [When/where is it used]
++- **Action**: [What the user does]
++- **Outcome**: [Expected result]
++- **Benefit**: [Value delivered]
++
++---
++
++## ✅ Acceptance Criteria
++
++<!-- Define clear criteria for feature completion -->
++
++### Functional Requirements
++- [ ] Requirement 1: [Specific functional requirement]
++- [ ] Requirement 2: [Specific functional requirement]
++- [ ] Requirement 3: [Specific functional requirement]
++
++### Non-Functional Requirements
++- [ ] Performance: [Target performance metrics]
++- [ ] Scalability: [How it should scale]
++- [ ] Security: [Security requirements]
++- [ ] Usability: [UX requirements]
++
++### Quality Standards
++- [ ] Test Coverage: 90%+ for new code
++- [ ] Documentation: Complete API docs and examples
++- [ ] Error Handling: Comprehensive error handling
++- [ ] Backward Compatibility: No breaking changes (or migration path provided)
++
++---
++
++## 🏗️ Implementation Approach
++
++### Design Phase
++
++#### Architecture Design
++- [ ] System architecture diagram
++- [ ] Component interaction design
++- [ ] Data flow design
++- [ ] Integration points identified
++
++#### API Design
++```javascript
++// Proposed API interface
++class NewFeature {
++  constructor(options) {
++    // initialization
++  }
++
++  async mainMethod(params) {
++    // main functionality
++    return result;
++  }
++}
++
++// Usage example
++const feature = new NewFeature({
++  option1: value1,
++  option2: value2
++});
++
++const result = await feature.mainMethod(params);
++```
++
++#### Data Model
++```javascript
++// Proposed data structures
++interface FeatureData {
++  id: string;
++  property1: Type1;
++  property2: Type2;
++  metadata: Metadata;
++}
++```
++
++#### UI/UX Design (if applicable)
++- [ ] Wireframes created
++- [ ] User flows documented
++- [ ] Mockups designed
++- [ ] Accessibility considerations
++
++---
++
++### Development Phase
++
++#### Core Implementation
++- [ ] Core feature logic
++- [ ] Integration with existing features
++- [ ] Configuration management
++- [ ] Error handling and validation
++
++#### Performance Optimization
++- [ ] Identify performance-critical paths
++- [ ] Implement caching strategy
++- [ ] Optimize algorithms
++- [ ] Load testing
++
++#### Security Implementation
++- [ ] Input validation
++- [ ] Authentication/Authorization
++- [ ] Data encryption (if needed)
++- [ ] Security audit
++
++---
++
++### Testing Phase
++
++#### Unit Tests
++- [ ] Core functionality tests
++- [ ] Edge case tests
++- [ ] Error handling tests
++- **Target Coverage**: 90%+
++
++```javascript
++// Example test structure
++describe('New Feature', () => {
++  describe('mainMethod', () => {
++    it('should handle valid input', async () => {
++      // test code
++    });
++
++    it('should handle edge cases', async () => {
++      // test code
++    });
++
++    it('should handle errors gracefully', async () => {
++      // test code
++    });
++  });
++});
++```
++
++#### Integration Tests
++- [ ] Integration with component A
++- [ ] Integration with component B
++- [ ] End-to-end workflow tests
++
++#### User Acceptance Testing
++- [ ] UAT scenario 1
++- [ ] UAT scenario 2
++- [ ] UAT scenario 3
++
++---
++
++## 📊 Technical Considerations
++
++### Dependencies
++- **New Dependencies**: [List any new packages needed]
++- **Version Compatibility**: [Compatibility requirements]
++- **Peer Dependencies**: [Any peer dependency requirements]
++
++### Performance Impact
++- **Expected Load**: [CPU, memory, network usage]
++- **Resource Requirements**: [Additional resources needed]
++- **Scalability**: [How the feature scales]
++- **Benchmarks**: [Expected performance benchmarks]
++
++### Backward Compatibility
++- **Breaking Changes**: ✅ Yes | ❌ No
++- **Migration Required**: ✅ Yes | ❌ No
++- **Deprecation Path**: [If deprecating existing features]
++
++### Security Considerations
++- **Sensitive Data**: [How sensitive data is handled]
++- **Authentication**: [Auth requirements]
++- **Authorization**: [Permission model]
++- **Audit Trail**: [Logging and auditing]
++
++---
++
++## 🐝 Swarm Coordination
++
++**Recommended**: ✅ Yes | ❌ No
++
++### Swarm Configuration
++- **Topology**: mesh | hierarchical | ring | star
++- **Recommended Topology**: [topology] - [reasoning]
++- **Max Agents**: [number]
++
++### Agent Assignment
++
++#### Design & Planning
++- **Architect**: System design and architecture
++- **Analyst**: Requirements analysis and validation
++
++#### Implementation
++- **Frontend Developer**: UI/UX implementation (if applicable)
++- **Backend Developer**: Core feature implementation
++- **Database Architect**: Data model and storage design
++
++#### Quality Assurance
++- **Tester**: Test creation and execution
++- **Security Specialist**: Security review and testing
++- **Performance Engineer**: Performance optimization
++
++#### Documentation
++- **Documenter**: API documentation and user guides
++- **Tutorial Writer**: Examples and tutorials
++
++### Task Decomposition
++
++#### Phase 1: Design (Priority: High)
++- [ ] Architecture design (Architect)
++- [ ] API specification (Architect + Backend Dev)
++- [ ] Data model design (Database Architect)
++- [ ] UI/UX design (Frontend Dev)
++
++#### Phase 2: Core Implementation (Priority: High)
++- [ ] Backend implementation (Backend Dev)
++- [ ] Frontend implementation (Frontend Dev)
++- [ ] Database integration (Database Architect)
++- [ ] API implementation (Backend Dev)
++
++#### Phase 3: Integration & Testing (Priority: High)
++- [ ] Component integration (All devs)
++- [ ] Unit tests (Testers + Devs)
++- [ ] Integration tests (Testers)
++- [ ] Performance testing (Performance Engineer)
++- [ ] Security testing (Security Specialist)
++
++#### Phase 4: Documentation & Polish (Priority: Medium)
++- [ ] API documentation (Documenter)
++- [ ] User guides (Documenter)
++- [ ] Examples and tutorials (Tutorial Writer)
++- [ ] Code cleanup and optimization (All devs)
++
++### Coordination Protocol
++
++```bash
++# Pre-task: Initialize swarm
++npx claude-flow@alpha hooks pre-task \
++  --description "Feature: [feature name]" \
++  --session-id "swarm-feature-[feature-slug]"
++
++# During: Track progress
++npx claude-flow@alpha hooks notify \
++  --message "Completed [phase/component]" \
++  --memory-key "swarm/feature/[feature-slug]/progress"
++
++# Post-task: Finalize
++npx claude-flow@alpha hooks post-task \
++  --task-id "feature-[feature-slug]" \
++  --export-metrics true
++```
++
++---
++
++## 📚 Documentation Requirements
++
++### API Documentation
++- [ ] Interface documentation
++- [ ] Method signatures and parameters
++- [ ] Return values and types
++- [ ] Error codes and handling
++- [ ] Code examples
++
++### User Documentation
++- [ ] Getting started guide
++- [ ] Configuration options
++- [ ] Usage examples
++- [ ] Best practices
++- [ ] Troubleshooting guide
++
++### Developer Documentation
++- [ ] Architecture overview
++- [ ] Implementation details
++- [ ] Testing guide
++- [ ] Contributing guidelines
++
++---
++
++## 🚀 Rollout Strategy
++
++### Phase 1: Alpha (Internal Testing)
++- [ ] Deploy to development environment
++- [ ] Internal testing and feedback
++- [ ] Fix critical issues
++
++### Phase 2: Beta (Limited Release)
++- [ ] Deploy to staging environment
++- [ ] Limited user testing
++- [ ] Gather feedback and metrics
++- [ ] Iterate on implementation
++
++### Phase 3: General Availability
++- [ ] Deploy to production
++- [ ] Monitor performance and errors
++- [ ] Provide user support
++- [ ] Collect usage metrics
++
++### Rollback Plan
++- [ ] Rollback procedure documented
++- [ ] Feature flags implemented
++- [ ] Monitoring and alerts configured
++- [ ] Support team briefed
++
++---
++
++## 📈 Success Criteria & Metrics
++
++### Launch Criteria
++- [ ] All acceptance criteria met
++- [ ] Test coverage ≥ 90%
++- [ ] Performance benchmarks achieved
++- [ ] Security review passed
++- [ ] Documentation complete
++
++### Post-Launch Metrics
++- **Adoption Rate**: [Target %]
++- **Performance**: [Target metrics]
++- **Error Rate**: [Maximum acceptable %]
++- **User Satisfaction**: [Target score]
++
++### Monitoring & Alerts
++- [ ] Performance monitoring configured
++- [ ] Error tracking enabled
++- [ ] Usage analytics implemented
++- [ ] Alerts for anomalies
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Depends on #
++- Blocks #
++- Part of epic #
++
++---
++
++## 💬 Stakeholder Input
++
++### User Feedback
++<!-- Include any user feedback or requests that led to this feature -->
++
++### Team Input
++<!-- Include feedback from team members -->
++
++### Competitive Analysis
++<!-- How do similar tools implement this? -->
++
++---
++
++## ✅ Completion Checklist
++
++### Planning
++- [ ] Requirements fully defined
++- [ ] Architecture designed
++- [ ] API specification complete
++- [ ] Resource requirements identified
++- [ ] Timeline estimated
++
++### Implementation
++- [ ] Core functionality implemented
++- [ ] Integration complete
++- [ ] Performance optimized
++- [ ] Security implemented
++- [ ] Error handling comprehensive
++
++### Quality Assurance
++- [ ] Unit tests (90%+ coverage)
++- [ ] Integration tests passing
++- [ ] Performance tests passing
++- [ ] Security audit passed
++- [ ] UAT completed
++
++### Documentation
++- [ ] API documentation complete
++- [ ] User guides written
++- [ ] Examples provided
++- [ ] Changelog updated
++
++### Release
++- [ ] Code reviewed and approved
++- [ ] PR created and merged
++- [ ] Deployed to staging
++- [ ] Verified in production
++- [ ] Announced to users
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, mockups, research, etc. -->
++
++---
++
++**Metadata**
++- **Target Version**: vX.Y.Z
++- **Priority**: Critical | High | Medium | Low
++- **Complexity**: High | Medium | Low
++- **Estimated Effort**: [hours/days/weeks]
++- **Dependencies**: [Any blocking dependencies]
+diff --git a/docs/best-practices/issues/templates/integration-task.md b/docs/best-practices/issues/templates/integration-task.md
+new file mode 100644
+index 00000000..b797a15f
+--- /dev/null
++++ b/docs/best-practices/issues/templates/integration-task.md
+@@ -0,0 +1,520 @@
++---
++name: 🔄 Integration Task
++about: Complex integration between components or systems
++title: '[INTEGRATION] Clear, Descriptive Title'
++labels: ['integration']
++assignees: ''
++---
++
++## 🔄 Integration Overview
++
++<!-- High-level description of what's being integrated -->
++
++[Describe the integration task and components involved]
++
++---
++
++## 🎯 Integration Objectives
++
++- [ ] **Objective 1**: [Specific integration goal]
++- [ ] **Objective 2**: [Specific integration goal]
++- [ ] **Objective 3**: [Specific integration goal]
++
++### Success Criteria
++- **Criterion 1**: [How success will be measured]
++- **Criterion 2**: [How success will be measured]
++- **Criterion 3**: [How success will be measured]
++
++---
++
++## 🏗️ Components Involved
++
++### Component A: [Name]
++- **Repository**: [repository name/link]
++- **Version**: vX.Y.Z
++- **Role**: [Role in integration]
++- **Owner**: [Team/person responsible]
++
++### Component B: [Name]
++- **Repository**: [repository name/link]
++- **Version**: vX.Y.Z
++- **Role**: [Role in integration]
++- **Owner**: [Team/person responsible]
++
++### Component C: [Name] (if applicable)
++- **Repository**: [repository name/link]
++- **Version**: vX.Y.Z
++- **Role**: [Role in integration]
++- **Owner**: [Team/person responsible]
++
++---
++
++## 📋 Integration Areas
++
++### 1. Dependencies
++- [ ] Update package.json in all repositories
++- [ ] Verify version compatibility
++- [ ] Resolve dependency conflicts
++- [ ] Update import statements
++- [ ] Configure monorepo/workspace (if applicable)
++
++**Dependency Matrix**:
++| Component | Requires | Version | Status |
++|-----------|----------|---------|--------|
++| Component A | Component B | ^X.Y.Z | ⏳ Pending |
++| Component B | Shared Lib | ^X.Y.Z | ⏳ Pending |
++
++---
++
++### 2. Functionality Integration
++
++#### Core Features
++- [ ] Feature A integration
++  - **Description**: [What's being integrated]
++  - **Approach**: [How it will be integrated]
++  - **Testing**: [How to verify]
++
++- [ ] Feature B integration
++  - **Description**: [What's being integrated]
++  - **Approach**: [How it will be integrated]
++  - **Testing**: [How to verify]
++
++#### API Compatibility
++- [ ] Verify API contracts match
++- [ ] Update API endpoints
++- [ ] Add backward compatibility layer (if needed)
++- [ ] Document API changes
++
++```javascript
++// API integration example
++// Component A calls Component B
++const componentB = require('component-b');
++
++async function integratedFeature() {
++  const result = await componentB.method({
++    parameter: value
++  });
++  return processResult(result);
++}
++```
++
++---
++
++### 3. Data Flow & Communication
++
++#### Data Exchange
++```javascript
++// Data flow diagram in code
++/**
++ * Component A → Transform → Component B → Process → Output
++ *
++ * A.getData()
++ *   ↓
++ * transform(data)
++ *   ↓
++ * B.processData(transformed)
++ *   ↓
++ * result
++ */
++```
++
++#### Communication Protocol
++- **Method**: REST API | GraphQL | Message Queue | Event Bus | Direct Call
++- **Format**: JSON | Protocol Buffers | XML
++- **Authentication**: API Key | OAuth | JWT | mTLS
++- **Error Handling**: Retry Strategy | Circuit Breaker | Fallback
++
++---
++
++### 4. Configuration Management
++
++#### Environment Variables
++```bash
++# Component A
++COMPONENT_B_URL=https://api.component-b.example.com
++COMPONENT_B_API_KEY=secret_key
++INTEGRATION_MODE=production
++
++# Component B
++COMPONENT_A_WEBHOOK=https://api.component-a.example.com/webhook
++SHARED_SECRET=shared_secret
++```
++
++#### Configuration Files
++```yaml
++# integration-config.yml
++integration:
++  componentA:
++    enabled: true
++    endpoint: ${COMPONENT_A_URL}
++    timeout: 5000
++
++  componentB:
++    enabled: true
++    endpoint: ${COMPONENT_B_URL}
++    retries: 3
++
++  shared:
++    logLevel: info
++    environment: production
++```
++
++---
++
++### 5. Testing Strategy
++
++#### Unit Tests
++- [ ] Component A unit tests (maintain 90%+ coverage)
++- [ ] Component B unit tests (maintain 90%+ coverage)
++- [ ] Integration helper unit tests
++
++```javascript
++// Example unit test for integration
++describe('Component Integration', () => {
++  it('should call Component B correctly', async () => {
++    const mockB = mockComponentB();
++    const result = await componentA.useComponentB(mockB);
++    expect(result).toBeDefined();
++    expect(mockB.method).toHaveBeenCalledWith(expectedParams);
++  });
++});
++```
++
++#### Integration Tests
++- [ ] End-to-end data flow test
++- [ ] Error handling and recovery test
++- [ ] Performance and load test
++- [ ] Concurrent operation test
++
++```javascript
++// Example integration test
++describe('Full Integration Flow', () => {
++  it('should complete full workflow', async () => {
++    // Setup both components
++    const componentA = await setupComponentA();
++    const componentB = await setupComponentB();
++
++    // Execute integrated workflow
++    const input = createTestInput();
++    const result = await integratedWorkflow(input);
++
++    // Verify results
++    expect(result.status).toBe('success');
++    expect(result.data).toMatchExpectedOutput();
++  });
++});
++```
++
++#### Compatibility Tests
++- [ ] Backward compatibility test
++- [ ] Version compatibility matrix test
++- [ ] Breaking change detection
++
++---
++
++## 🔗 Integration Challenges
++
++### Known Challenges
++
++#### Challenge 1: [Title]
++- **Description**: [What's the challenge]
++- **Impact**: High | Medium | Low
++- **Mitigation**: [How to address it]
++- **Workaround**: [Alternative if mitigation fails]
++
++#### Challenge 2: [Title]
++- **Description**: [What's the challenge]
++- **Impact**: High | Medium | Low
++- **Mitigation**: [How to address it]
++- **Workaround**: [Alternative if mitigation fails]
++
++### Risk Assessment
++
++| Risk | Probability | Impact | Mitigation |
++|------|-------------|--------|------------|
++| Version incompatibility | Medium | High | Lock versions, test thoroughly |
++| Breaking API changes | Low | High | API versioning, contracts |
++| Performance degradation | Medium | Medium | Load testing, optimization |
++| Data inconsistency | Low | High | Transaction management, validation |
++
++---
++
++## 🛠️ Migration Path
++
++### From Current State
++**Current Architecture**:
++```
++[Diagram of current state]
++Component A (standalone)
++Component B (standalone)
++```
++
++**Target Architecture**:
++```
++[Diagram of target state]
++Component A ←→ Integration Layer ←→ Component B
++```
++
++### Migration Steps
++
++#### Phase 1: Preparation
++- [ ] Analyze current implementations
++- [ ] Identify breaking changes
++- [ ] Create integration design
++- [ ] Set up test environments
++
++#### Phase 2: Implementation
++- [ ] Implement integration layer
++- [ ] Update Component A
++- [ ] Update Component B
++- [ ] Create configuration management
++
++#### Phase 3: Testing & Validation
++- [ ] Run unit tests
++- [ ] Run integration tests
++- [ ] Performance testing
++- [ ] Security testing
++
++#### Phase 4: Deployment
++- [ ] Deploy to development
++- [ ] Deploy to staging
++- [ ] Validation in staging
++- [ ] Deploy to production
++
++### Rollback Plan
++```bash
++# Quick rollback procedure
++git revert <integration-commit>
++npm install component-a@<previous-version>
++npm install component-b@<previous-version>
++restart-services
++```
++
++---
++
++## 📊 Performance Considerations
++
++### Expected Performance Impact
++
++#### Before Integration
++- **Component A**: [metrics]
++- **Component B**: [metrics]
++- **Total Latency**: [ms]
++
++#### After Integration
++- **Component A**: [metrics]
++- **Component B**: [metrics]
++- **Integration Overhead**: [ms]
++- **Total Latency**: [ms]
++
++### Optimization Strategies
++- [ ] Cache frequently accessed data
++- [ ] Implement connection pooling
++- [ ] Use async/await for non-blocking operations
++- [ ] Batch requests where possible
++- [ ] Implement circuit breakers
++
++---
++
++## 🔒 Security Considerations
++
++### Authentication & Authorization
++- [ ] Implement mutual authentication
++- [ ] Use encrypted connections (TLS)
++- [ ] Rotate credentials regularly
++- [ ] Implement least-privilege access
++
++### Data Security
++- [ ] Encrypt data in transit
++- [ ] Encrypt sensitive data at rest
++- [ ] Validate all inputs
++- [ ] Sanitize all outputs
++
++### Audit & Compliance
++- [ ] Log all integration operations
++- [ ] Implement request tracing
++- [ ] Set up security monitoring
++- [ ] Document compliance requirements
++
++---
++
++## 🐝 Swarm Coordination
++
++**Recommended**: ✅ Yes
++
++### Swarm Configuration
++- **Topology**: mesh (parallel development across components)
++- **Max Agents**: 6-8
++
++### Agent Assignment
++
++#### Architecture & Design
++- **Architect**: Overall integration design
++- **Analyst**: Requirements analysis and compatibility check
++
++#### Development
++- **Component A Developer**: Updates to Component A
++- **Component B Developer**: Updates to Component B
++- **Integration Engineer**: Integration layer implementation
++- **Database Architect**: Data flow and schema integration
++
++#### Quality Assurance
++- **Integration Tester**: End-to-end integration testing
++- **Security Specialist**: Security review and testing
++- **Performance Engineer**: Load testing and optimization
++
++#### Documentation
++- **Documenter**: Integration guides and API documentation
++
++### Task Decomposition
++
++#### Phase 1: Analysis & Design (Week 1)
++- [ ] Analyze current state (Analyst)
++- [ ] Design integration architecture (Architect)
++- [ ] Identify compatibility issues (Analyst)
++- [ ] Design data flow (Database Architect)
++- [ ] Security planning (Security Specialist)
++
++#### Phase 2: Implementation (Week 2-3)
++- [ ] Implement Component A changes (Component A Developer)
++- [ ] Implement Component B changes (Component B Developer)
++- [ ] Build integration layer (Integration Engineer)
++- [ ] Update data schemas (Database Architect)
++- [ ] Implement security controls (Security Specialist)
++
++#### Phase 3: Testing & Optimization (Week 4)
++- [ ] Integration testing (Integration Tester)
++- [ ] Security testing (Security Specialist)
++- [ ] Performance testing (Performance Engineer)
++- [ ] Bug fixes (All developers)
++
++#### Phase 4: Documentation & Deployment (Week 5)
++- [ ] Write integration docs (Documenter)
++- [ ] Create migration guide (Documenter)
++- [ ] Deploy to staging (Integration Engineer)
++- [ ] Final validation (All team)
++- [ ] Production deployment (Integration Engineer)
++
++### Coordination Protocol
++
++```bash
++# Pre-task: Initialize integration swarm
++npx claude-flow@alpha hooks pre-task \
++  --description "Integration: ComponentA + ComponentB" \
++  --session-id "swarm-integration-a-b"
++
++# During: Coordinate across agents
++npx claude-flow@alpha hooks notify \
++  --message "Component A integration complete" \
++  --memory-key "swarm/integration/componentA/status"
++
++npx claude-flow@alpha hooks notify \
++  --message "Component B integration complete" \
++  --memory-key "swarm/integration/componentB/status"
++
++# Post-task: Finalize integration
++npx claude-flow@alpha hooks post-task \
++  --task-id "integration-a-b" \
++  --export-metrics true
++```
++
++---
++
++## 📚 Documentation Requirements
++
++### Integration Guide
++- [ ] Architecture overview
++- [ ] Setup instructions
++- [ ] Configuration guide
++- [ ] API documentation
++- [ ] Troubleshooting guide
++
++### API Documentation
++- [ ] Integration endpoints
++- [ ] Request/response formats
++- [ ] Error codes
++- [ ] Rate limits
++- [ ] Authentication
++
++### Migration Guide
++- [ ] Pre-migration checklist
++- [ ] Step-by-step migration
++- [ ] Verification steps
++- [ ] Rollback procedure
++- [ ] FAQ
++
++---
++
++## ✅ Completion Checklist
++
++### Planning
++- [ ] Integration scope defined
++- [ ] Components identified
++- [ ] Architecture designed
++- [ ] Risks assessed
++- [ ] Timeline created
++
++### Implementation
++- [ ] Dependencies updated
++- [ ] Core integration implemented
++- [ ] Configuration complete
++- [ ] Security implemented
++- [ ] Error handling comprehensive
++
++### Testing
++- [ ] Unit tests (90%+ coverage)
++- [ ] Integration tests passing
++- [ ] Performance tests passing
++- [ ] Security tests passing
++- [ ] Compatibility verified
++
++### Documentation
++- [ ] Integration guide complete
++- [ ] API docs updated
++- [ ] Migration guide written
++- [ ] Troubleshooting guide created
++- [ ] Changelog updated
++
++### Deployment
++- [ ] Deployed to development
++- [ ] Deployed to staging
++- [ ] Validated in staging
++- [ ] Deployed to production
++- [ ] Monitoring configured
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Depends on #
++- Blocks #
++- Part of epic #
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, diagrams, research -->
++
++### Architecture Diagrams
++<!-- Include integration architecture diagrams -->
++
++### Compatibility Matrix
++| Component A | Component B | Status | Notes |
++|-------------|-------------|--------|-------|
++| v1.x | v2.x | ❌ Incompatible | Breaking changes |
++| v2.x | v2.x | ✅ Compatible | Recommended |
++| v2.x | v3.x | ⚠️ Partial | Some features missing |
++
++---
++
++**Metadata**
++- **Target Version**: vX.Y.Z
++- **Priority**: High | Medium | Low
++- **Complexity**: High | Medium | Low
++- **Estimated Effort**: [days/weeks]
++- **Integration Scope**: [Components involved]
++- **Breaking Changes**: ✅ Yes | ❌ No
+diff --git a/docs/best-practices/issues/templates/rollback-incident.md b/docs/best-practices/issues/templates/rollback-incident.md
+new file mode 100644
+index 00000000..a04694bd
+--- /dev/null
++++ b/docs/best-practices/issues/templates/rollback-incident.md
+@@ -0,0 +1,405 @@
++---
++name: 🔄 Rollback Incident Report
++about: Report an incident that requires or resulted from a rollback
++title: '🔄 Rollback Incident: [Brief Description]'
++labels: ['rollback', 'incident', 'high-priority']
++assignees: []
++---
++
++## 🔄 Rollback Incident Details
++
++### Incident Summary
++- **Incident Type**: Manual Rollback | Automated Rollback | Rollback Failure | Prevented Incident
++- **Severity**: 🔴 Critical | 🟡 High | 🟢 Medium | ⚪ Low
++- **Status**: 🔴 Active | 🟡 Investigating | 🟢 Resolved | ⚪ Monitoring
++- **Detected At**: YYYY-MM-DD HH:MM UTC
++- **Resolved At**: YYYY-MM-DD HH:MM UTC (if resolved)
++
++---
++
++## 📋 Rollback Information
++
++### Version Details
++- **Source Version**: vX.Y.Z (problematic version)
++- **Target Version**: vX.Y.Z (rollback target)
++- **Rollback Session ID**: [From workflow logs or git commit]
++- **Rollback Method**: Automated | Manual | Partial
++
++### Trigger Information
++- **Triggered By**: [Person, System, or Alert]
++- **Trigger Reason**: [Brief description of why rollback was initiated]
++- **Decision Made At**: YYYY-MM-DD HH:MM UTC
++- **Approval From**: [Person or role]
++
++---
++
++## 💥 Impact Assessment
++
++### Production Impact
++- [ ] Production services affected
++- [ ] User-facing functionality impacted
++- [ ] Data integrity concerns
++- [ ] Performance degradation
++- [ ] Security implications
++- [ ] Financial impact
++
++### Affected Components
++- Component 1: [Name] - [Impact description]
++- Component 2: [Name] - [Impact description]
++- Component 3: [Name] - [Impact description]
++
++### User Impact
++- **Users Affected**: [Number or percentage]
++- **Impact Duration**: [How long users were affected]
++- **Impact Severity**: Complete Outage | Degraded Service | Minor Issues
++- **Geographic Scope**: Global | Regional ([regions])
++- **User Segments Affected**: [Which types of users]
++
++### Business Impact
++- **Revenue Impact**: [$amount or %]
++- **SLA Violations**: ✅ Yes | ❌ No
++- **Customer Complaints**: [Number]
++- **Reputation Impact**: High | Medium | Low
++
++---
++
++## ⏱️ Timeline
++
++### Detection
++- **YYYY-MM-DD HH:MM UTC**: [First indication of issue]
++- **YYYY-MM-DD HH:MM UTC**: [Issue confirmed]
++- **YYYY-MM-DD HH:MM UTC**: [Escalation to on-call]
++
++### Response
++- **YYYY-MM-DD HH:MM UTC**: [Incident response initiated]
++- **YYYY-MM-DD HH:MM UTC**: [Rollback decision made]
++- **YYYY-MM-DD HH:MM UTC**: [Rollback initiated]
++
++### Rollback Execution
++- **YYYY-MM-DD HH:MM UTC**: [Rollback started]
++- **YYYY-MM-DD HH:MM UTC**: [Code reverted]
++- **YYYY-MM-DD HH:MM UTC**: [Services restarted]
++- **YYYY-MM-DD HH:MM UTC**: [Rollback completed]
++
++### Resolution
++- **YYYY-MM-DD HH:MM UTC**: [Service restored]
++- **YYYY-MM-DD HH:MM UTC**: [Verification completed]
++- **YYYY-MM-DD HH:MM UTC**: [Incident closed]
++
++### Total Duration
++- **Detection to Rollback**: [duration]
++- **Rollback Execution**: [duration]
++- **Total Incident Duration**: [duration]
++
++---
++
++## 🔍 Root Cause Analysis
++
++### Primary Cause
++[Technical explanation of what went wrong]
++
++### Contributing Factors
++
++#### Technical Factors
++- **Factor 1**: [Description and how it contributed]
++- **Factor 2**: [Description and how it contributed]
++- **Factor 3**: [Description and how it contributed]
++
++#### Process Factors
++- **Factor 1**: [Process gap or failure]
++- **Factor 2**: [Process gap or failure]
++
++#### Human Factors
++- **Factor 1**: [Human error or decision]
++- **Factor 2**: [Human error or decision]
++
++### Failure Points
++
++#### Why Didn't Safeguards Catch This?
++- **Testing**: [What testing missed this issue]
++- **Monitoring**: [Why monitoring didn't detect it earlier]
++- **Deployment**: [What deployment safeguards failed]
++- **Code Review**: [What code review missed]
++
++### Code/Configuration at Fault
++
++**File**: `path/to/problematic/file.js` (lines X-Y)
++
++```javascript
++// Problematic code that caused the incident
++const problematic = () => {
++  // code that caused issue
++};
++```
++
++**Why It Failed**: [Technical explanation]
++
++---
++
++## ✅ Resolution Actions
++
++### Immediate Actions Taken
++- [ ] Automated rollback executed successfully
++- [ ] Manual rollback executed
++- [ ] Manual intervention required
++- [ ] Database rollback performed
++- [ ] Configuration restored
++- [ ] Cache cleared
++- [ ] Monitoring alerts configured
++- [ ] User notification sent
++
++### Rollback Procedure
++
++```bash
++# Commands executed for rollback
++git log --oneline -5
++
++# Revert to previous version
++git revert <commit-sha>
++
++# Or hard reset (if necessary)
++git reset --hard <target-commit>
++
++# Rebuild and deploy
++npm run build
++npm run deploy
++
++# Verify rollback
++npm run verify
++```
++
++### Verification Steps
++1. [Verification step 1]
++2. [Verification step 2]
++3. [Verification step 3]
++
++### Service Restoration
++- **Services Restarted**: [List of services]
++- **Databases Restored**: [List of databases]
++- **Caches Cleared**: [List of caches]
++- **Configuration Reverted**: [List of configs]
++
++---
++
++## 🛡️ Prevention Measures
++
++### Immediate Actions (Next 24-48 Hours)
++- [ ] Hot fix deployed (if applicable)
++- [ ] Monitoring enhanced
++- [ ] Alerting rules updated
++- [ ] Documentation updated
++- [ ] Team briefed
++
++### Short-Term Improvements (Next 1-2 Weeks)
++- [ ] Add specific tests for this scenario
++- [ ] Improve deployment safeguards
++- [ ] Enhance monitoring coverage
++- [ ] Update runbooks
++- [ ] Review similar code for same issue
++
++### Long-Term Improvements (Next 1-3 Months)
++- [ ] Process improvement: [Specific improvement]
++- [ ] System improvement: [Specific improvement]
++- [ ] Training: [What training is needed]
++- [ ] Tool improvement: [What tools needed]
++- [ ] Architecture change: [If architectural change needed]
++
++---
++
++## 📚 Lessons Learned
++
++### What Went Well
++1. [Positive aspect 1]
++2. [Positive aspect 2]
++3. [Positive aspect 3]
++
++### What Went Wrong
++1. [Problem 1 and why it happened]
++2. [Problem 2 and why it happened]
++3. [Problem 3 and why it happened]
++
++### What We Learned
++1. **Lesson 1**: [Key takeaway]
++   - **Action**: [Specific action to take]
++
++2. **Lesson 2**: [Key takeaway]
++   - **Action**: [Specific action to take]
++
++3. **Lesson 3**: [Key takeaway]
++   - **Action**: [Specific action to take]
++
++### Surprises
++- [Anything unexpected that happened]
++- [Anything that worked differently than expected]
++
++---
++
++## 🔄 Follow-up Actions
++
++### Technical Follow-ups
++- [ ] Create ticket for permanent fix
++- [ ] Update rollback procedures
++- [ ] Improve monitoring/alerting
++- [ ] Enhance testing procedures
++- [ ] Review deployment pipeline
++- [ ] Update documentation
++
++**Permanent Fix Ticket**: #[issue number]
++
++### Process Follow-ups
++- [ ] Update incident response runbook
++- [ ] Review and update deployment checklist
++- [ ] Conduct team retrospective
++- [ ] Update team training
++- [ ] Review similar systems for same issue
++
++### Communication Follow-ups
++- [ ] Team notified
++- [ ] Management informed
++- [ ] Users communicated (if applicable)
++- [ ] Post-mortem scheduled
++- [ ] Post-mortem completed
++- [ ] Findings shared
++
++---
++
++## 👥 Stakeholder Communication
++
++### Internal Communication
++
++#### Team Notification
++- **Channel**: [Slack, Email, etc.]
++- **Time**: YYYY-MM-DD HH:MM UTC
++- **Message**: [Summary of what was communicated]
++
++#### Management Notification
++- **Stakeholders Notified**: [Names/roles]
++- **Time**: YYYY-MM-DD HH:MM UTC
++- **Format**: Email | Meeting | Report
++
++### External Communication
++
++#### User Communication
++- [ ] Status page updated
++- [ ] Email notification sent
++- [ ] In-app notification displayed
++- [ ] Social media update posted
++
++**Message Template Used**: [Link or summary]
++
++#### Post-Mortem
++- **Scheduled For**: YYYY-MM-DD HH:MM UTC
++- **Attendees**: [List of attendees]
++- **Format**: Virtual | In-Person
++- **Facilitator**: [Name]
++
++---
++
++## 📊 Metrics & Indicators
++
++### Incident Metrics
++- **Time to Detect**: [duration from incident to detection]
++- **Time to Respond**: [duration from detection to response]
++- **Time to Rollback**: [duration from decision to rollback complete]
++- **Time to Resolve**: [total incident duration]
++- **MTTR (Mean Time to Recovery)**: [duration]
++
++### Impact Metrics
++- **Affected Users**: [number or percentage]
++- **Failed Requests**: [number]
++- **Error Rate**: [percentage during incident]
++- **Performance Degradation**: [percentage]
++- **Downtime**: [duration]
++
++### Rollback Metrics
++- **Rollback Success**: ✅ Success | ⚠️ Partial | ❌ Failed
++- **Rollback Duration**: [duration]
++- **Data Loss**: ✅ Yes | ❌ No
++- **Required Manual Intervention**: ✅ Yes | ❌ No
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- **Problematic PR**: #[PR that caused issue]
++- **Rollback PR**: #[PR that performed rollback]
++- **Permanent Fix**: #[PR with permanent fix]
++- **Related Incidents**: #[Other related incidents]
++
++---
++
++## 📎 Rollback Artifacts
++
++### Workflow Runs
++- **Rollback Workflow**: [Link to workflow run]
++- **Deployment Workflow**: [Link to original deployment]
++
++### Logs & Monitoring
++- **Error Logs**: [Link to logs]
++- **Monitoring Dashboard**: [Link to dashboard]
++- **Alert History**: [Link to alerts]
++
++### Communication Records
++- **Incident Channel**: [Link to Slack thread or email thread]
++- **Status Page**: [Link to status page updates]
++
++### Documents
++- **Runbook Used**: [Link to runbook]
++- **Post-Mortem**: [Link to post-mortem doc]
++
++---
++
++## ✅ Incident Closure Checklist
++
++### Resolution Verification
++- [ ] All services restored to normal
++- [ ] All users can access system
++- [ ] No residual errors or degradation
++- [ ] Monitoring shows healthy state
++- [ ] SLAs met post-recovery
++
++### Documentation
++- [ ] Incident timeline documented
++- [ ] Root cause analysis complete
++- [ ] Lessons learned documented
++- [ ] Runbooks updated
++- [ ] Knowledge base updated
++
++### Follow-up
++- [ ] All follow-up tickets created
++- [ ] Responsible owners assigned
++- [ ] Due dates set
++- [ ] Post-mortem completed
++- [ ] Findings shared with team
++
++### Prevention
++- [ ] Immediate safeguards implemented
++- [ ] Monitoring enhanced
++- [ ] Alerts configured
++- [ ] Testing improved
++- [ ] Deployment process updated
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, screenshots, or information -->
++
++### Screenshots
++<!-- Include relevant screenshots of errors, monitoring dashboards, etc. -->
++
++### External References
++- [Link to monitoring dashboard]
++- [Link to error tracking]
++- [Link to deployment system]
++
++---
++
++**Metadata**
++- **Incident ID**: INC-[number]
++- **Severity**: Critical | High | Medium | Low
++- **Category**: Code Issue | Configuration Issue | Infrastructure Issue | External Dependency
++- **Detection Method**: Monitoring | User Report | Manual Discovery | Automated Test
++- **Rollback Success**: ✅ Complete | ⚠️ Partial | ❌ Failed
+diff --git a/docs/best-practices/issues/templates/swarm-task.md b/docs/best-practices/issues/templates/swarm-task.md
+new file mode 100644
+index 00000000..6a29ad25
+--- /dev/null
++++ b/docs/best-practices/issues/templates/swarm-task.md
+@@ -0,0 +1,565 @@
++---
++name: 🐝 Swarm Task
++about: Create a task for AI swarm processing and multi-agent coordination
++title: '[SWARM] Clear, Descriptive Title'
++labels: ['swarm-task', 'swarm-ready']
++assignees: ''
++---
++
++## 🐝 Swarm Task Overview
++
++<!-- High-level description of the multi-agent task -->
++
++[Describe the complex task that requires swarm coordination]
++
++---
++
++## 🎯 Objectives
++
++### Primary Goals
++- [ ] **Goal 1**: [Specific, measurable goal]
++- [ ] **Goal 2**: [Specific, measurable goal]
++- [ ] **Goal 3**: [Specific, measurable goal]
++
++### Success Metrics
++- **Metric 1**: [How success will be measured]
++- **Metric 2**: [How success will be measured]
++- **Target Completion**: [Specific target]
++
++---
++
++## 🏗️ Swarm Configuration
++
++### Topology Selection
++- **Selected Topology**: ⚪ Mesh | ⚪ Hierarchical | ⚪ Ring | ⚪ Star
++
++**Reasoning**: [Why this topology was chosen for this task]
++
++#### Topology Details
++
++<details>
++<summary><strong>Mesh Topology</strong> (Click to expand)</summary>
++
++**Best For**: Parallel, independent tasks
++- Peer-to-peer coordination
++- No single point of failure
++- Flexible agent communication
++- Ideal for: Feature development, parallel testing, distributed analysis
++
++</details>
++
++<details>
++<summary><strong>Hierarchical Topology</strong> (Click to expand)</summary>
++
++**Best For**: Coordinated workflows with dependencies
++- Queen-led coordination
++- Worker specialization
++- Clear delegation and reporting
++- Ideal for: Release management, complex builds, stage-gate processes
++
++</details>
++
++<details>
++<summary><strong>Ring Topology</strong> (Click to expand)</summary>
++
++**Best For**: Sequential processing with handoffs
++- Sequential task flow
++- State passing between agents
++- Pipeline-style processing
++- Ideal for: CI/CD pipelines, data transformation, review workflows
++
++</details>
++
++<details>
++<summary><strong>Star Topology</strong> (Click to expand)</summary>
++
++**Best For**: Centralized coordination with distributed workers
++- Central hub coordination
++- Specialized worker agents
++- Task routing and aggregation
++- Ideal for: Issue triage, load distribution, orchestration
++
++</details>
++
++### Swarm Parameters
++- **Max Agents**: [number] (recommended: 3-8 for most tasks)
++- **Coordination Mode**: Synchronous | Asynchronous | Hybrid
++- **Memory Sharing**: Enabled | Disabled
++- **Progress Tracking**: Real-time | Periodic
++
++---
++
++## 👥 Agent Assignment
++
++### Agent Types & Roles
++
++<details>
++<summary><strong>Coordinator/Queen</strong> (Primary orchestrator)</summary>
++
++**Responsibilities**:
++- Overall task orchestration
++- Progress tracking and reporting
++- Resource allocation
++- Conflict resolution
++- Final validation
++
++**Skills Required**: Project management, system architecture
++**Priority**: Critical
++
++</details>
++
++<details>
++<summary><strong>Analyst</strong> (Research and analysis)</summary>
++
++**Responsibilities**:
++- Requirement analysis
++- Code analysis
++- Performance profiling
++- Risk assessment
++- Technical recommendations
++
++**Skills Required**: Analysis, pattern recognition
++**Priority**: High
++
++</details>
++
++<details>
++<summary><strong>Coder/Developer</strong> (Implementation)</summary>
++
++**Responsibilities**:
++- Code implementation
++- Feature development
++- Bug fixing
++- Code refactoring
++- API development
++
++**Skills Required**: Programming, problem-solving
++**Priority**: High
++
++</details>
++
++<details>
++<summary><strong>Tester/QA</strong> (Quality assurance)</summary>
++
++**Responsibilities**:
++- Test creation
++- Test execution
++- Bug verification
++- Quality validation
++- Coverage analysis
++
++**Skills Required**: Testing, quality assurance
++**Priority**: High
++
++</details>
++
++<details>
++<summary><strong>Architect</strong> (System design)</summary>
++
++**Responsibilities**:
++- System architecture
++- Design patterns
++- Technology selection
++- Integration design
++- Scalability planning
++
++**Skills Required**: Architecture, system design
++**Priority**: Medium-High
++
++</details>
++
++<details>
++<summary><strong>Security Specialist</strong> (Security review)</summary>
++
++**Responsibilities**:
++- Security audit
++- Vulnerability scanning
++- Access control review
++- Compliance checking
++- Security recommendations
++
++**Skills Required**: Security, compliance
++**Priority**: Medium-High
++
++</details>
++
++<details>
++<summary><strong>Performance Engineer</strong> (Optimization)</summary>
++
++**Responsibilities**:
++- Performance profiling
++- Optimization recommendations
++- Load testing
++- Bottleneck analysis
++- Resource optimization
++
++**Skills Required**: Performance tuning
++**Priority**: Medium
++
++</details>
++
++<details>
++<summary><strong>Documenter</strong> (Documentation)</summary>
++
++**Responsibilities**:
++- Documentation creation
++- API documentation
++- User guides
++- Examples and tutorials
++- Knowledge transfer
++
++**Skills Required**: Technical writing
++**Priority**: Medium
++
++</details>
++
++---
++
++## 📋 Task Decomposition
++
++### Phase 1: Planning & Design
++**Duration**: [estimated time]
++**Agents**: Coordinator, Architect, Analyst
++
++- [ ] **Task 1.1**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [None or list dependencies]
++  - **Estimated Effort**: [hours/days]
++
++- [ ] **Task 1.2**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [None or list dependencies]
++  - **Estimated Effort**: [hours/days]
++
++---
++
++### Phase 2: Implementation
++**Duration**: [estimated time]
++**Agents**: Coder, Database Architect, Frontend Developer
++
++- [ ] **Task 2.1**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 1.1, etc.]
++  - **Estimated Effort**: [hours/days]
++
++- [ ] **Task 2.2**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 2.1, etc.]
++  - **Estimated Effort**: [hours/days]
++
++---
++
++### Phase 3: Testing & Validation
++**Duration**: [estimated time]
++**Agents**: Tester, Security Specialist, Performance Engineer
++
++- [ ] **Task 3.1**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 2.x, etc.]
++  - **Estimated Effort**: [hours/days]
++
++- [ ] **Task 3.2**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 3.1, etc.]
++  - **Estimated Effort**: [hours/days]
++
++---
++
++### Phase 4: Documentation & Finalization
++**Duration**: [estimated time]
++**Agents**: Documenter, Coordinator
++
++- [ ] **Task 4.1**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 3.x, etc.]
++  - **Estimated Effort**: [hours/days]
++
++- [ ] **Task 4.2**: [Specific task]
++  - **Owner**: [Agent type]
++  - **Priority**: High | Medium | Low
++  - **Dependencies**: [Task 4.1, etc.]
++  - **Estimated Effort**: [hours/days]
++
++---
++
++## 🔄 Coordination Protocol
++
++### Pre-Task Hooks
++
++```bash
++# Initialize swarm environment
++npx claude-flow@alpha hooks pre-task \
++  --description "Swarm Task: [task title]" \
++  --session-id "swarm-[task-slug]-[session-id]"
++
++# Restore any prior context
++npx claude-flow@alpha hooks session-restore \
++  --session-id "swarm-[task-slug]-[session-id]"
++
++# Initialize swarm topology
++npx claude-flow@alpha mcp swarm_init \
++  --topology "[selected-topology]" \
++  --max-agents [number]
++```
++
++---
++
++### During Task Execution
++
++#### Progress Tracking
++```bash
++# Each agent reports progress
++npx claude-flow@alpha hooks notify \
++  --message "[Agent type]: Completed [specific milestone]" \
++  --memory-key "swarm/[task-slug]/progress/[agent-id]"
++
++# Store intermediate results
++npx claude-flow@alpha hooks post-edit \
++  --file "[path/to/file]" \
++  --memory-key "swarm/[task-slug]/artifacts/[component]"
++
++# Share data between agents
++npx claude-flow@alpha mcp memory_usage \
++  --action "store" \
++  --key "swarm/[task-slug]/shared/[data-key]" \
++  --value "[data-value]"
++```
++
++#### Agent Communication
++```bash
++# Coordinator broadcasts to all agents
++npx claude-flow@alpha hooks notify \
++  --message "Coordinator: Phase 2 ready to start" \
++  --broadcast true
++
++# Agent requests help from another agent
++npx claude-flow@alpha hooks notify \
++  --message "Coder → Tester: Ready for integration testing" \
++  --target "tester"
++```
++
++---
++
++### Post-Task Hooks
++
++```bash
++# Finalize and export results
++npx claude-flow@alpha hooks post-task \
++  --task-id "swarm-[task-slug]" \
++  --export-metrics true
++
++# Store completion state
++npx claude-flow@alpha hooks session-end \
++  --session-id "swarm-[task-slug]-[session-id]" \
++  --export-path "./swarm-reports/[task-slug]"
++
++# Generate swarm report
++npx claude-flow@alpha mcp swarm_status \
++  --format "detailed" > "./swarm-reports/[task-slug]-status.json"
++```
++
++---
++
++## 📊 Progress Tracking
++
++### Automated Updates
++This section will be automatically updated by swarm agents during execution.
++
++#### Completion Status
++- **Overall Progress**: 0% (auto-updated)
++- **Phase 1 (Planning)**: ⏳ Not Started
++- **Phase 2 (Implementation)**: ⏳ Not Started
++- **Phase 3 (Testing)**: ⏳ Not Started
++- **Phase 4 (Documentation)**: ⏳ Not Started
++
++#### Agent Status
++| Agent | Status | Current Task | Progress | Last Update |
++|-------|--------|--------------|----------|-------------|
++| Coordinator | ⏳ Idle | - | - | - |
++| Analyst | ⏳ Idle | - | - | - |
++| Coder | ⏳ Idle | - | - | - |
++| Tester | ⏳ Idle | - | - | - |
++
++#### Metrics
++- **Tasks Completed**: 0 / [total]
++- **Test Coverage**: 0%
++- **Code Quality Score**: -
++- **Performance Benchmarks**: -
++
++---
++
++## ⚠️ Risks & Blockers
++
++### Identified Risks
++
++#### Risk 1: [Title]
++- **Probability**: High | Medium | Low
++- **Impact**: High | Medium | Low
++- **Mitigation**: [Strategy to mitigate]
++- **Owner**: [Agent responsible]
++
++#### Risk 2: [Title]
++- **Probability**: High | Medium | Low
++- **Impact**: High | Medium | Low
++- **Mitigation**: [Strategy to mitigate]
++- **Owner**: [Agent responsible]
++
++### Active Blockers
++<!-- Updated in real-time as blockers arise -->
++
++- [ ] **Blocker 1**: [Description]
++  - **Blocking**: [What it's blocking]
++  - **Owner**: [Who's resolving]
++  - **ETA**: [Expected resolution]
++
++---
++
++## 🔗 Dependencies
++
++### External Dependencies
++- **Dependency 1**: [Description and why needed]
++- **Dependency 2**: [Description and why needed]
++
++### Internal Dependencies
++- **Component A**: [What's needed from it]
++- **Component B**: [What's needed from it]
++
++### Blocking Issues
++- Blocked by #[issue number]: [Description]
++- Blocks #[issue number]: [Description]
++
++---
++
++## ✅ Acceptance Criteria
++
++### Functional Requirements
++- [ ] Requirement 1: [Specific, testable requirement]
++- [ ] Requirement 2: [Specific, testable requirement]
++- [ ] Requirement 3: [Specific, testable requirement]
++
++### Quality Requirements
++- [ ] Test Coverage ≥ 90%
++- [ ] All tests passing
++- [ ] Performance benchmarks met
++- [ ] Security audit passed
++- [ ] Documentation complete
++- [ ] Code review approved
++
++### Swarm Coordination Requirements
++- [ ] All agents completed assigned tasks
++- [ ] Cross-agent integration verified
++- [ ] Coordination overhead documented
++- [ ] Lessons learned captured
++
++---
++
++## 📈 Success Metrics
++
++### Performance Metrics
++- **Task Completion Time**: [target vs actual]
++- **Swarm Efficiency**: [coordination overhead]
++- **Agent Utilization**: [% time agents active]
++
++### Quality Metrics
++- **Code Quality Score**: [target score]
++- **Test Coverage**: [target %]
++- **Bug Density**: [bugs per KLOC]
++
++### Coordination Metrics
++- **Agent Collaboration**: [cross-agent interactions]
++- **Communication Efficiency**: [signal-to-noise ratio]
++- **Synchronization Overhead**: [% time coordinating]
++
++---
++
++## 📚 Documentation & Artifacts
++
++### Required Documentation
++- [ ] Architecture documentation
++- [ ] API documentation
++- [ ] User guides
++- [ ] Developer guides
++- [ ] Swarm coordination report
++
++### Generated Artifacts
++- [ ] Code implementations
++- [ ] Test suites
++- [ ] Performance benchmarks
++- [ ] Swarm metrics report
++- [ ] Lessons learned document
++
++---
++
++## ✅ Completion Checklist
++
++### Planning
++- [ ] Task scope defined
++- [ ] Swarm topology selected
++- [ ] Agents assigned
++- [ ] Tasks decomposed
++- [ ] Timeline estimated
++
++### Execution
++- [ ] All phases completed
++- [ ] All tasks finished
++- [ ] Cross-agent integration verified
++- [ ] Quality criteria met
++
++### Validation
++- [ ] Acceptance criteria met
++- [ ] Tests passing (90%+ coverage)
++- [ ] Performance targets achieved
++- [ ] Security validated
++- [ ] Documentation complete
++
++### Finalization
++- [ ] Code merged
++- [ ] Swarm metrics exported
++- [ ] Lessons learned documented
++- [ ] Follow-up tasks created
++- [ ] Issue closed
++
++---
++
++## 🔗 Related Issues/PRs
++
++<!-- Link related work -->
++
++- Relates to #
++- Depends on #
++- Blocks #
++- Part of epic #
++
++---
++
++## 📝 Additional Notes
++
++<!-- Any additional context, diagrams, research -->
++
++### Swarm Topology Diagram
++```
++[Visual representation of chosen topology with agent connections]
++```
++
++### Coordination Insights
++<!-- Filled in post-completion -->
++- [Key insight about swarm coordination]
++- [Challenge encountered and resolution]
++- [Recommendation for future swarm tasks]
++
++---
++
++**Metadata**
++- **Swarm Session ID**: swarm-[task-slug]-[session-id]
++- **Topology**: mesh | hierarchical | ring | star
++- **Agent Count**: [number]
++- **Estimated Duration**: [hours/days/weeks]
++- **Priority**: Critical | High | Medium | Low
++- **Complexity**: High | Medium | Low
